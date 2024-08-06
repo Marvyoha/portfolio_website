@@ -66,7 +66,7 @@ class _HomepageMobileState extends State<HomepageMobile> {
 
   Widget _buildDrawer(BuildContext context, ThemeProvider themeProvider) {
     return Drawer(
-      width: widget.platformWidth * 0.35,
+      width: widget.platformWidth * 0.50,
       child: Padding(
         padding: GlobalVariables.drawerPadding,
         child: Column(
