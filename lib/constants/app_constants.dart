@@ -18,7 +18,7 @@ class GlobalVariables {
   }
 
   static EdgeInsetsGeometry normPadding =
-      const EdgeInsets.symmetric(horizontal: 20);
+      const EdgeInsets.symmetric(horizontal: 15);
   static EdgeInsetsGeometry cardPadding = const EdgeInsets.all(10);
   static EdgeInsetsGeometry drawerPadding =
       const EdgeInsets.fromLTRB(10, 20, 10, 0);

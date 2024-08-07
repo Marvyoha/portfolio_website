@@ -1,42 +1,192 @@
+import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio_website/constants/app_constants.dart';
 import 'package:my_portfolio_website/constants/app_fonts.dart';
+import 'package:my_portfolio_website/constants/app_strings.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/providers/layout_provider.dart';
 import '../../core/providers/theme_provider.dart';
 
-class HomepageTablet extends StatelessWidget {
+class HomepageTablet extends StatefulWidget {
   final double platformWidth;
   final double platformHeight;
-  const HomepageTablet(
-      {super.key, required this.platformWidth, required this.platformHeight});
+  const HomepageTablet({
+    super.key,
+    required this.platformWidth,
+    required this.platformHeight,
+  });
+
+  @override
+  State<HomepageTablet> createState() => _HomepageTabletState();
+}
+
+class _HomepageTabletState extends State<HomepageTablet> {
+  final PageController _controller = PageController();
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    bool onLastPage = false;
+    LayoutProvider layoutProvider =
+        Provider.of<LayoutProvider>(context, listen: true);
+    ThemeProvider themeProvider =
+        Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: IconButton(
-            onPressed: () {
-              Provider.of<ThemeProvider>(context, listen: false)
-                  .toggleTheme(context);
-            },
-            icon: const Icon(Icons.light)),
+        centerTitle: true,
+        title: Text(
+          '${Content.name} ${layoutProvider.currentPlatform}',
+          style: WriteStyles.header2TabletandMobile(context),
+        ),
       ),
-      body: Center(
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: _handleRefresh,
+          child: Padding(
+            padding: GlobalVariables.drawerPadding,
+            child: PageView(
+              pageSnapping: false,
+              scrollBehavior: const ScrollBehavior(),
+              scrollDirection: Axis.vertical,
+              controller: _controller,
+              onPageChanged: (value) {
+                setState(() {
+                  onLastPage = (value == 4);
+                });
+              },
+              children: [
+                Container(color: Colors.blue),
+                Container(color: Colors.green),
+                Container(color: Colors.yellow),
+                Container(color: Colors.orange),
+                Container(color: Colors.red),
+              ],
+            ),
+          ),
+        ),
+      ),
+      drawer: _buildDrawer(context, themeProvider),
+    );
+  }
+
+  Future<void> _handleRefresh() async {
+    // Add your refresh logic here
+    // For example, you could reset the page to the first one:
+    await _controller.animateToPage(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
+    // You might also want to reload data or perform other refresh actions
+  }
+
+  Widget _buildDrawer(BuildContext context, ThemeProvider themeProvider) {
+    return Drawer(
+      child: Padding(
+        padding: GlobalVariables.drawerPadding,
         child: Column(
-          children: [
-            Text(
-              'The current width is: $platformWidth x $platformHeight',
-              style: WriteStyles.header2TabletandMobile(context),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AppBar(
+              automaticallyImplyLeading: false,
+              toolbarHeight: 30,
             ),
-            Text(
-              'Tablet',
-              style: WriteStyles.header1Desktop(context),
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('Home',
+                  style: WriteStyles.body1TabletandMobile(context)),
+              onTap: () {
+                Navigator.pop(context);
+                _controller.animateToPage(0,
+                    duration: const Duration(milliseconds: 780),
+                    curve: Curves.easeOut);
+              },
             ),
-            Container(
-              color: Theme.of(context).colorScheme.primary,
-              height: platformHeight * 0.2,
-              width: platformWidth * 0.6,
+            GlobalVariables.spaceSmaller(),
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('About Me',
+                  style: WriteStyles.body1TabletandMobile(context)),
+              onTap: () {
+                Navigator.pop(context);
+                _controller.animateToPage(1,
+                    duration: const Duration(milliseconds: 780),
+                    curve: Curves.easeOut);
+              },
+            ),
+            GlobalVariables.spaceSmaller(),
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('Qualifications',
+                  style: WriteStyles.body1TabletandMobile(context)),
+              onTap: () {
+                Navigator.pop(context);
+                _controller.animateToPage(2,
+                    duration: const Duration(milliseconds: 780),
+                    curve: Curves.easeOut);
+              },
+            ),
+            GlobalVariables.spaceSmaller(),
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('Skills',
+                  style: WriteStyles.body1TabletandMobile(context)),
+              onTap: () {
+                Navigator.pop(context);
+                _controller.animateToPage(3,
+                    duration: const Duration(milliseconds: 780),
+                    curve: Curves.easeOut);
+              },
+            ),
+            GlobalVariables.spaceSmaller(),
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('Projects',
+                  style: WriteStyles.body1TabletandMobile(context)),
+              onTap: () {
+                Navigator.pop(context);
+                _controller.animateToPage(4,
+                    duration: const Duration(milliseconds: 780),
+                    curve: Curves.easeOut);
+              },
+            ),
+            GlobalVariables.spaceSmaller(),
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Icon(
+                  themeProvider.isLight ? CarbonIcons.sun : CarbonIcons.moon),
+              leading: Text('Theme',
+                  style: WriteStyles.body1TabletandMobile(context)),
+              onTap: () {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme(context);
+              },
+            ),
+            GlobalVariables.spaceSmaller(),
+            ListTile(
+              tileColor: Theme.of(context).colorScheme.primary,
+              onTap: () async {
+                if (await canLaunchUrl(Content.cvLink)) {
+                  await launchUrl(Content.cvLink,
+                      mode: LaunchMode.externalApplication);
+                } else {
+                  throw 'Could not launch ${Content.cvLink}';
+                }
+              },
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              title: Text('View CV',
+                  style: WriteStyles.body1TabletandMobile(context)
+                      .copyWith(color: Theme.of(context).colorScheme.surface)),
             )
           ],
         ),
