@@ -19,7 +19,8 @@ class GlobalVariables {
 
   static EdgeInsetsGeometry desktopPadding =
       const EdgeInsets.symmetric(horizontal: 80, vertical: 70);
-  static EdgeInsetsGeometry cardPadding = const EdgeInsets.all(10);
+  static EdgeInsetsGeometry mobilePadding =
+      const EdgeInsets.symmetric(horizontal: 16);
   static EdgeInsetsGeometry drawerPadding =
       const EdgeInsets.fromLTRB(10, 20, 10, 0);
 
@@ -62,6 +63,17 @@ class GlobalVariables {
     }
     return const SizedBox(
       height: 10,
+    );
+  }
+
+  static spaceSmallest({bool isWidth = false}) {
+    if (isWidth == true) {
+      return const SizedBox(
+        width: 8,
+      );
+    }
+    return const SizedBox(
+      height: 8,
     );
   }
 }

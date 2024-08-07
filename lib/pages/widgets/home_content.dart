@@ -22,34 +22,8 @@ class HomeContents extends StatelessWidget {
     Widget layoutChecker() {
       switch (layoutProvider.currentPlatform) {
         case Platform.mobile:
-          return Center(
-            child: Column(
-              children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: platformWidth * 0.6,
-                    // maxHeight: platformHeight * 0.50,
-                  ),
-                  child: Material(
-                    shadowColor: Theme.of(context).colorScheme.secondary,
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(40),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(40),
-                      child: Image.asset(
-                        'lib/assets/profile.jpeg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                Text(
-                  'Home for mobile.',
-                  style: WriteStyles.header1Mobile(context),
-                ),
-              ],
-            ),
-          );
+          return MobileHome(
+              platformHeight: platformHeight, platformWidth: platformWidth);
         case Platform.tablet:
           return TabletHome(
               platformHeight: platformHeight, platformWidth: platformWidth);
@@ -62,6 +36,124 @@ class HomeContents extends StatelessWidget {
     }
 
     return layoutChecker();
+  }
+}
+
+class MobileHome extends StatelessWidget {
+  const MobileHome({
+    super.key,
+    required this.platformWidth,
+    required this.platformHeight,
+  });
+
+  final double platformWidth;
+  final double platformHeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: GlobalVariables.mobilePadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: platformWidth * 0.6,
+                maxHeight: 250,
+              ),
+              child: Material(
+                shadowColor: Theme.of(context).colorScheme.secondary,
+                elevation: 5,
+                borderRadius: BorderRadius.circular(40),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: Image.asset(
+                    'lib/assets/profile.jpeg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          GlobalVariables.spaceSmall(),
+          Text(
+            Content.introHeader,
+            style: WriteStyles.header1Mobile(context),
+          ),
+          GlobalVariables.spaceSmallest(),
+          Text(
+            Content.introduction,
+            style: WriteStyles.body1TabletandMobile(context),
+          ),
+          GlobalVariables.spaceSmall(),
+          Row(
+            children: [
+              const Icon(CarbonIcons.location),
+              GlobalVariables.spaceSmaller(isWidth: true),
+              Text(
+                Content.location,
+                style: WriteStyles.body1TabletandMobile(context),
+              ),
+            ],
+          ),
+          GlobalVariables.spaceSmallest(),
+          Row(
+            children: [
+              const Icon(CarbonIcons.email),
+              GlobalVariables.spaceSmaller(isWidth: true),
+              SelectableText(
+                Content.email,
+                style: WriteStyles.body1TabletandMobile(context),
+              ),
+            ],
+          ),
+          GlobalVariables.spaceSmallest(),
+          Row(
+            children: [
+              const Icon(
+                CarbonIcons.dot_mark,
+                color: Colors.green,
+              ),
+              GlobalVariables.spaceSmaller(isWidth: true),
+              Text(
+                Content.availability,
+                style: WriteStyles.body1TabletandMobile(context),
+              ),
+            ],
+          ),
+          GlobalVariables.spaceSmall(),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () async {
+                  if (await canLaunchUrl(Content.githubLink)) {
+                    await launchUrl(Content.githubLink,
+                        mode: LaunchMode.externalApplication);
+                  } else {
+                    throw 'Could not launch ${Content.githubLink}';
+                  }
+                },
+                icon: const Icon(CarbonIcons.logo_github),
+                iconSize: 40,
+              ),
+              IconButton(
+                onPressed: () async {
+                  if (await canLaunchUrl(Content.linkedinLink)) {
+                    await launchUrl(Content.linkedinLink,
+                        mode: LaunchMode.externalApplication);
+                  } else {
+                    throw 'Could not launch ${Content.linkedinLink}';
+                  }
+                },
+                icon: const Icon(CarbonIcons.logo_linkedin),
+                iconSize: 40,
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -122,6 +214,7 @@ class DesktopHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: GlobalVariables.desktopPadding,
+      // ignore: avoid_unnecessary_containers
       child: Container(
         // margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 45),
         child: Row(
