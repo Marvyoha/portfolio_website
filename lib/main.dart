@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_website/core/layout_helper.dart';
 import 'package:my_portfolio_website/core/providers/layout_provider.dart';
-import 'package:my_portfolio_website/pages/mobile/homepage_mobile.dart';
-import 'package:my_portfolio_website/pages/pageview_test.dart';
 import 'package:provider/provider.dart';
 
 import 'core/providers/theme_provider.dart';

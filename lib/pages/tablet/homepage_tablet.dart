@@ -1,13 +1,18 @@
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio_website/constants/app_constants.dart';
-import 'package:my_portfolio_website/constants/app_fonts.dart';
-import 'package:my_portfolio_website/constants/app_strings.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../constants/app_constants.dart';
+import '../../constants/app_fonts.dart';
+import '../../constants/app_strings.dart';
 import '../../core/providers/layout_provider.dart';
 import '../../core/providers/theme_provider.dart';
+import '../widgets/about_me_content.dart';
+import '../widgets/home_content.dart';
+import '../widgets/project_content.dart';
+import '../widgets/qualifications_content.dart';
+import '../widgets/skills_content.dart';
 
 class HomepageTablet extends StatefulWidget {
   final double platformWidth;
@@ -29,8 +34,7 @@ class _HomepageTabletState extends State<HomepageTablet> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     bool onLastPage = false;
-    LayoutProvider layoutProvider =
-        Provider.of<LayoutProvider>(context, listen: true);
+
     ThemeProvider themeProvider =
         Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
@@ -38,7 +42,7 @@ class _HomepageTabletState extends State<HomepageTablet> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          '${Content.name} ${layoutProvider.currentPlatform}',
+          Content.name,
           style: WriteStyles.header2TabletandMobile(context),
         ),
       ),
@@ -58,11 +62,13 @@ class _HomepageTabletState extends State<HomepageTablet> {
                 });
               },
               children: [
-                Container(color: Colors.blue),
-                Container(color: Colors.green),
-                Container(color: Colors.yellow),
-                Container(color: Colors.orange),
-                Container(color: Colors.red),
+                HomeContents(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth),
+                const AboutMeContent(),
+                const QualificationsContent(),
+                const SkillsContent(),
+                const ProjectContent()
               ],
             ),
           ),
@@ -162,10 +168,10 @@ class _HomepageTabletState extends State<HomepageTablet> {
             ListTile(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              title: Icon(
-                  themeProvider.isLight ? CarbonIcons.sun : CarbonIcons.moon),
               leading: Text('Theme',
                   style: WriteStyles.body1TabletandMobile(context)),
+              trailing: Icon(
+                  themeProvider.isLight ? CarbonIcons.sun : CarbonIcons.moon),
               onTap: () {
                 Provider.of<ThemeProvider>(context, listen: false)
                     .toggleTheme(context);

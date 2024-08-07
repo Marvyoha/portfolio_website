@@ -1,13 +1,17 @@
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio_website/constants/app_constants.dart';
-import 'package:my_portfolio_website/constants/app_fonts.dart';
-import 'package:my_portfolio_website/constants/app_strings.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../core/providers/layout_provider.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/app_fonts.dart';
+import '../../constants/app_strings.dart';
 import '../../core/providers/theme_provider.dart';
+import '../widgets/about_me_content.dart';
+import '../widgets/home_content.dart';
+import '../widgets/project_content.dart';
+import '../widgets/qualifications_content.dart';
+import '../widgets/skills_content.dart';
 
 class HomepageDesktop extends StatefulWidget {
   final double platformWidth;
@@ -29,15 +33,12 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     bool onLastPage = false;
-    LayoutProvider layoutProvider =
-        Provider.of<LayoutProvider>(context, listen: true);
+
     ThemeProvider themeProvider =
         Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        elevation: 4,
-        automaticallyImplyLeading: false,
         title: Text(
           Content.name,
           style: WriteStyles.header3Desktop(context),
@@ -133,11 +134,13 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
           });
         },
         children: [
-          Container(color: Colors.blue),
-          Container(color: Colors.green),
-          Container(color: Colors.yellow),
-          Container(color: Colors.orange),
-          Container(color: Colors.red),
+          HomeContents(
+              platformHeight: widget.platformHeight,
+              platformWidth: widget.platformWidth),
+          const AboutMeContent(),
+          const QualificationsContent(),
+          const SkillsContent(),
+          const ProjectContent()
         ],
       ),
     );

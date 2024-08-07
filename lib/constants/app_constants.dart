@@ -17,8 +17,8 @@ class GlobalVariables {
     return MediaQuery.of(context).size.width;
   }
 
-  static EdgeInsetsGeometry normPadding =
-      const EdgeInsets.symmetric(horizontal: 15);
+  static EdgeInsetsGeometry desktopPadding =
+      const EdgeInsets.symmetric(horizontal: 80, vertical: 70);
   static EdgeInsetsGeometry cardPadding = const EdgeInsets.all(10);
   static EdgeInsetsGeometry drawerPadding =
       const EdgeInsets.fromLTRB(10, 20, 10, 0);

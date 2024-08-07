@@ -1,12 +1,17 @@
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio_website/constants/app_constants.dart';
-import 'package:my_portfolio_website/constants/app_fonts.dart';
-import 'package:my_portfolio_website/constants/app_strings.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../constants/app_constants.dart';
+import '../../constants/app_fonts.dart';
+import '../../constants/app_strings.dart';
 import '../../core/providers/theme_provider.dart';
+import '../widgets/about_me_content.dart';
+import '../widgets/home_content.dart';
+import '../widgets/project_content.dart';
+import '../widgets/qualifications_content.dart';
+import '../widgets/skills_content.dart';
 
 class HomepageMobile extends StatefulWidget {
   final double platformWidth;
@@ -55,11 +60,13 @@ class _HomepageMobileState extends State<HomepageMobile> {
                 });
               },
               children: [
-                Container(color: Colors.blue),
-                Container(color: Colors.green),
-                Container(color: Colors.yellow),
-                Container(color: Colors.orange),
-                Container(color: Colors.red),
+                HomeContents(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth),
+                const AboutMeContent(),
+                const QualificationsContent(),
+                const SkillsContent(),
+                const ProjectContent()
               ],
             ),
           ),
@@ -159,10 +166,10 @@ class _HomepageMobileState extends State<HomepageMobile> {
             ListTile(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              title: Icon(
-                  themeProvider.isLight ? CarbonIcons.sun : CarbonIcons.moon),
               leading: Text('Theme',
                   style: WriteStyles.body1TabletandMobile(context)),
+              trailing: Icon(
+                  themeProvider.isLight ? CarbonIcons.sun : CarbonIcons.moon),
               onTap: () {
                 Provider.of<ThemeProvider>(context, listen: false)
                     .toggleTheme(context);

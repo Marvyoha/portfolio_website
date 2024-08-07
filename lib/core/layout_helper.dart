@@ -16,6 +16,7 @@ class ResponsiveLayout extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
+        layoutProvider;
         switch (constraints.maxWidth) {
           case < mobileWidth:
             layoutProvider.currentPlatform = Platform.mobile;
