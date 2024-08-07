@@ -76,4 +76,18 @@ class GlobalVariables {
       height: 8,
     );
   }
+
+  static desktopSpaceMedium(
+      {required double platformHeight,
+      required double platformWidth,
+      bool isWidth = false}) {
+    if (isWidth == true) {
+      return SizedBox(
+        width: platformWidth,
+      );
+    }
+    return SizedBox(
+      height: platformHeight * 0.04,
+    );
+  }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio_website/constants/app_constants.dart';
-import 'package:my_portfolio_website/core/providers/layout_provider.dart';
-import 'package:my_portfolio_website/pages/desktop/homepage_desktop.dart';
-import 'package:my_portfolio_website/pages/mobile/homepage_mobile.dart';
 import 'package:provider/provider.dart';
+
+import '../constants/app_constants.dart';
+import '../pages/desktop/homepage_desktop.dart';
+import '../pages/mobile/homepage_mobile.dart';
 import '../pages/tablet/homepage_tablet.dart';
+import 'providers/layout_provider.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({super.key});
@@ -16,27 +17,29 @@ class ResponsiveLayout extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        layoutProvider;
         switch (constraints.maxWidth) {
           case < mobileWidth:
             layoutProvider.currentPlatform = Platform.mobile;
+            final mobileConstraints = constraints;
             return HomepageMobile(
-              platformWidth: constraints.maxWidth,
-              platformHeight: constraints.maxHeight,
+              platformWidth: mobileConstraints.maxWidth,
+              platformHeight: mobileConstraints.maxHeight,
             );
 
           case >= mobileWidth && < desktopWidth:
             layoutProvider.currentPlatform = Platform.tablet;
+            final tabletConstraints = constraints;
             return HomepageTablet(
-              platformWidth: constraints.maxWidth,
-              platformHeight: constraints.maxHeight,
+              platformWidth: tabletConstraints.maxWidth,
+              platformHeight: tabletConstraints.maxHeight,
             );
 
           default:
             layoutProvider.currentPlatform = Platform.desktop;
+            final desktopConstraints = constraints;
             return HomepageDesktop(
-              platformWidth: constraints.maxWidth,
-              platformHeight: constraints.maxHeight,
+              platformWidth: desktopConstraints.maxWidth,
+              platformHeight: desktopConstraints.maxHeight,
             );
         }
       },

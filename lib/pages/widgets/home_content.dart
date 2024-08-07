@@ -60,7 +60,7 @@ class MobileHome extends StatelessWidget {
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 maxWidth: platformWidth * 0.6,
-                maxHeight: 250,
+                maxHeight: 200,
               ),
               child: Material(
                 shadowColor: Theme.of(context).colorScheme.secondary,
@@ -169,31 +169,106 @@ class TabletHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: GlobalVariables.mobilePadding,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: platformWidth * 0.4,
-              // maxHeight: platformHeight * 0.50,
-            ),
-            child: Material(
-              shadowColor: Theme.of(context).colorScheme.secondary,
-              elevation: 5,
-              borderRadius: BorderRadius.circular(40),
-              child: ClipRRect(
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: platformWidth * 0.6,
+                // maxHeight: 200,
+              ),
+              child: Material(
+                shadowColor: Theme.of(context).colorScheme.secondary,
+                elevation: 5,
                 borderRadius: BorderRadius.circular(40),
-                child: Image.asset(
-                  'lib/assets/profile.jpeg',
-                  fit: BoxFit.cover,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: Image.asset(
+                    'lib/assets/profile.jpeg',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
           ),
+          GlobalVariables.spaceSmall(),
           Text(
-            'Home for tablet.',
+            Content.introHeader,
             style: WriteStyles.header1Tablet(context),
           ),
+          GlobalVariables.spaceSmallest(),
+          Text(
+            Content.introduction,
+            style: WriteStyles.body1TabletandMobile(context),
+          ),
+          GlobalVariables.spaceSmall(),
+          Row(
+            children: [
+              const Icon(CarbonIcons.location),
+              GlobalVariables.spaceSmaller(isWidth: true),
+              Text(
+                Content.location,
+                style: WriteStyles.body1TabletandMobile(context),
+              ),
+            ],
+          ),
+          GlobalVariables.spaceSmallest(),
+          Row(
+            children: [
+              const Icon(CarbonIcons.email),
+              GlobalVariables.spaceSmaller(isWidth: true),
+              SelectableText(
+                Content.email,
+                style: WriteStyles.body1TabletandMobile(context),
+              ),
+            ],
+          ),
+          GlobalVariables.spaceSmallest(),
+          Row(
+            children: [
+              const Icon(
+                CarbonIcons.dot_mark,
+                color: Colors.green,
+              ),
+              GlobalVariables.spaceSmaller(isWidth: true),
+              Text(
+                Content.availability,
+                style: WriteStyles.body1TabletandMobile(context),
+              ),
+            ],
+          ),
+          GlobalVariables.spaceSmall(),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () async {
+                  if (await canLaunchUrl(Content.githubLink)) {
+                    await launchUrl(Content.githubLink,
+                        mode: LaunchMode.externalApplication);
+                  } else {
+                    throw 'Could not launch ${Content.githubLink}';
+                  }
+                },
+                icon: const Icon(CarbonIcons.logo_github),
+                iconSize: 40,
+              ),
+              IconButton(
+                onPressed: () async {
+                  if (await canLaunchUrl(Content.linkedinLink)) {
+                    await launchUrl(Content.linkedinLink,
+                        mode: LaunchMode.externalApplication);
+                  } else {
+                    throw 'Could not launch ${Content.linkedinLink}';
+                  }
+                },
+                icon: const Icon(CarbonIcons.logo_linkedin),
+                iconSize: 40,
+              ),
+            ],
+          )
         ],
       ),
     );
@@ -236,6 +311,9 @@ class DesktopHome extends StatelessWidget {
                     style: WriteStyles.body1Desktop(context),
                   ),
                 ),
+                // GlobalVariables.desktopSpaceMedium(
+                //     platformHeight: platformHeight,
+                //     platformWidth: platformWidth),
                 GlobalVariables.spaceMedium(),
                 Row(
                   children: [
@@ -306,20 +384,23 @@ class DesktopHome extends StatelessWidget {
             GlobalVariables.spaceMedium(isWidth: true),
             Flexible(
                 flex: 2,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: platformWidth * 0.23,
-                    // maxHeight: platformHeight * 0.45,
-                  ),
-                  child: Material(
-                    shadowColor: Theme.of(context).colorScheme.secondary,
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(40),
-                    child: ClipRRect(
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: platformWidth * 0.23,
+                      // maxHeight: platformHeight * 0.45,
+                    ),
+                    child: Material(
+                      shadowColor: Theme.of(context).colorScheme.secondary,
+                      elevation: 5,
                       borderRadius: BorderRadius.circular(40),
-                      child: Image.asset(
-                        'lib/assets/profile.jpeg',
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(40),
+                        child: Image.asset(
+                          'lib/assets/profile.jpeg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

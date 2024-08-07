@@ -28,6 +28,7 @@ class HomepageMobile extends StatefulWidget {
 
 class _HomepageMobileState extends State<HomepageMobile> {
   final PageController _controller = PageController();
+  bool _isRefreshing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,6 @@ class _HomepageMobileState extends State<HomepageMobile> {
             padding: GlobalVariables.drawerPadding,
             child: PageView(
               pageSnapping: false,
-              scrollBehavior: const ScrollBehavior(),
               scrollDirection: Axis.vertical,
               controller: _controller,
               onPageChanged: (value) {
@@ -77,14 +77,32 @@ class _HomepageMobileState extends State<HomepageMobile> {
   }
 
   Future<void> _handleRefresh() async {
-    // Add your refresh logic here
-    // For example, you could reset the page to the first one:
-    await _controller.animateToPage(
-      0,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOut,
-    );
-    // You might also want to reload data or perform other refresh actions
+    if (_isRefreshing) return;
+    setState(() {
+      _isRefreshing = true;
+    });
+
+    try {
+      // Simulate a network request or data reload
+      await Future.delayed(const Duration(seconds: 2));
+
+      // Reset to the first page
+      await _controller.animateToPage(
+        0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+
+      // Reload data or perform other refresh actions here
+      // For example, you might want to call methods to reload specific content:
+      // await _reloadHomeContent();
+      // await _reloadAboutMeContent();
+      // ... and so on for other sections
+    } finally {
+      setState(() {
+        _isRefreshing = false;
+      });
+    }
   }
 
   Widget _buildDrawer(BuildContext context, ThemeProvider themeProvider) {
