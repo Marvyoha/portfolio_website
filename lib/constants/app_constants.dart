@@ -18,7 +18,10 @@ class GlobalVariables {
   }
 
   static EdgeInsetsGeometry desktopPadding =
-      const EdgeInsets.symmetric(horizontal: 80, vertical: 70);
+      const EdgeInsets.fromLTRB(80, 100, 80, 100);
+  static EdgeInsetsGeometry desktopPaddingMain =
+      const EdgeInsets.fromLTRB(80, 56, 80, 100);
+
   static EdgeInsetsGeometry mobilePadding =
       const EdgeInsets.symmetric(horizontal: 16);
   static EdgeInsetsGeometry drawerPadding =
@@ -77,17 +80,45 @@ class GlobalVariables {
     );
   }
 
+  static desktopSpaceLarge(
+      {required double platformHeight,
+      required double platformWidth,
+      bool isWidth = false}) {
+    if (isWidth == true) {
+      return SizedBox(
+        width: platformWidth * 0.06,
+      );
+    }
+    return SizedBox(
+      height: platformHeight * 0.06,
+    );
+  }
+
   static desktopSpaceMedium(
       {required double platformHeight,
       required double platformWidth,
       bool isWidth = false}) {
     if (isWidth == true) {
       return SizedBox(
-        width: platformWidth,
+        width: platformWidth * 0.03,
       );
     }
     return SizedBox(
-      height: platformHeight * 0.04,
+      height: platformHeight * 0.03,
+    );
+  }
+
+  static desktopSpaceSmaller(
+      {required double platformHeight,
+      required double platformWidth,
+      bool isWidth = false}) {
+    if (isWidth == true) {
+      return SizedBox(
+        width: platformWidth * 0.01,
+      );
+    }
+    return SizedBox(
+      height: platformHeight * 0.01,
     );
   }
 }

@@ -5,7 +5,10 @@ import 'package:provider/provider.dart';
 import '../../core/providers/layout_provider.dart';
 
 class ProjectContent extends StatelessWidget {
-  const ProjectContent({super.key});
+  final double platformWidth;
+  final double platformHeight;
+  const ProjectContent(
+      {super.key, required this.platformWidth, required this.platformHeight});
 
   @override
   Widget build(BuildContext context) {

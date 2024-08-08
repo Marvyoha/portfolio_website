@@ -287,127 +287,122 @@ class DesktopHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: GlobalVariables.desktopPadding,
-      // ignore: avoid_unnecessary_containers
-      child: Container(
-        // margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 45),
-        child: Row(
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            SizedBox(
+              width: platformWidth * 0.6,
+              child: Text(
+                Content.introHeader,
+                style: WriteStyles.header1Desktop(context),
+              ),
+            ),
+            SizedBox(
+              width: platformWidth * 0.6,
+              child: Text(
+                Content.introduction,
+                style: WriteStyles.body1Desktop(context),
+              ),
+            ),
+            GlobalVariables.desktopSpaceMedium(
+                platformHeight: platformHeight, platformWidth: platformWidth),
+            // GlobalVariables.spaceMedium(),
+            Row(
               children: [
-                SizedBox(
-                  width: platformWidth * 0.6,
-                  child: Text(
-                    Content.introHeader,
-                    style: WriteStyles.header1Desktop(context),
-                  ),
+                const Icon(CarbonIcons.location),
+                GlobalVariables.spaceSmaller(isWidth: true),
+                Text(
+                  Content.location,
+                  style: WriteStyles.body1Desktop(context),
                 ),
-                SizedBox(
-                  width: platformWidth * 0.6,
-                  child: Text(
-                    Content.introduction,
-                    style: WriteStyles.body1Desktop(context),
-                  ),
-                ),
-                // GlobalVariables.desktopSpaceMedium(
-                //     platformHeight: platformHeight,
-                //     platformWidth: platformWidth),
-                GlobalVariables.spaceMedium(),
-                Row(
-                  children: [
-                    const Icon(CarbonIcons.location),
-                    GlobalVariables.spaceSmaller(isWidth: true),
-                    Text(
-                      Content.location,
-                      style: WriteStyles.body1Desktop(context),
-                    ),
-                  ],
-                ),
-                GlobalVariables.spaceSmaller(),
-                Row(
-                  children: [
-                    const Icon(CarbonIcons.email),
-                    GlobalVariables.spaceSmaller(isWidth: true),
-                    SelectableText(
-                      Content.email,
-                      style: WriteStyles.body1Desktop(context),
-                    ),
-                  ],
-                ),
-                GlobalVariables.spaceSmaller(),
-                Row(
-                  children: [
-                    const Icon(
-                      CarbonIcons.dot_mark,
-                      color: Colors.green,
-                    ),
-                    GlobalVariables.spaceSmaller(isWidth: true),
-                    Text(
-                      Content.availability,
-                      style: WriteStyles.body1Desktop(context),
-                    ),
-                  ],
-                ),
-                GlobalVariables.spaceMedium(),
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        if (await canLaunchUrl(Content.githubLink)) {
-                          await launchUrl(Content.githubLink,
-                              mode: LaunchMode.externalApplication);
-                        } else {
-                          throw 'Could not launch ${Content.githubLink}';
-                        }
-                      },
-                      icon: const Icon(CarbonIcons.logo_github),
-                      iconSize: 40,
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        if (await canLaunchUrl(Content.linkedinLink)) {
-                          await launchUrl(Content.linkedinLink,
-                              mode: LaunchMode.externalApplication);
-                        } else {
-                          throw 'Could not launch ${Content.linkedinLink}';
-                        }
-                      },
-                      icon: const Icon(CarbonIcons.logo_linkedin),
-                      iconSize: 40,
-                    ),
-                  ],
-                )
               ],
             ),
-            GlobalVariables.spaceMedium(isWidth: true),
-            Flexible(
-                flex: 2,
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: platformWidth * 0.23,
-                      // maxHeight: platformHeight * 0.45,
-                    ),
-                    child: Material(
-                      shadowColor: Theme.of(context).colorScheme.secondary,
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(40),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(40),
-                        child: Image.asset(
-                          'lib/assets/profile.jpeg',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ))
+            GlobalVariables.desktopSpaceSmaller(
+                platformHeight: platformHeight, platformWidth: platformWidth),
+            Row(
+              children: [
+                const Icon(CarbonIcons.email),
+                GlobalVariables.spaceSmaller(isWidth: true),
+                SelectableText(
+                  Content.email,
+                  style: WriteStyles.body1Desktop(context),
+                ),
+              ],
+            ),
+            GlobalVariables.desktopSpaceSmaller(
+                platformHeight: platformHeight, platformWidth: platformWidth),
+            Row(
+              children: [
+                const Icon(
+                  CarbonIcons.dot_mark,
+                  color: Colors.green,
+                ),
+                GlobalVariables.spaceSmaller(isWidth: true),
+                Text(
+                  Content.availability,
+                  style: WriteStyles.body1Desktop(context),
+                ),
+              ],
+            ),
+            GlobalVariables.desktopSpaceMedium(
+                platformHeight: platformHeight, platformWidth: platformWidth),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () async {
+                    if (await canLaunchUrl(Content.githubLink)) {
+                      await launchUrl(Content.githubLink,
+                          mode: LaunchMode.externalApplication);
+                    } else {
+                      throw 'Could not launch ${Content.githubLink}';
+                    }
+                  },
+                  icon: const Icon(CarbonIcons.logo_github),
+                  iconSize: 40,
+                ),
+                IconButton(
+                  onPressed: () async {
+                    if (await canLaunchUrl(Content.linkedinLink)) {
+                      await launchUrl(Content.linkedinLink,
+                          mode: LaunchMode.externalApplication);
+                    } else {
+                      throw 'Could not launch ${Content.linkedinLink}';
+                    }
+                  },
+                  icon: const Icon(CarbonIcons.logo_linkedin),
+                  iconSize: 40,
+                ),
+              ],
+            )
           ],
         ),
-      ),
+        GlobalVariables.spaceMedium(isWidth: true),
+        Flexible(
+            flex: 2,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: platformWidth * 0.3,
+                  // maxHeight: platformHeight * 0.45,
+                ),
+                child: Material(
+                  shadowColor: Theme.of(context).colorScheme.secondary,
+                  elevation: 5,
+                  borderRadius: BorderRadius.circular(40),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(40),
+                    child: Image.asset(
+                      'lib/assets/profile.jpeg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ))
+      ],
     );
   }
 }

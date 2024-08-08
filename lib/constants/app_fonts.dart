@@ -5,7 +5,7 @@ class WriteStyles {
   static TextStyle header1Desktop(BuildContext context) {
     return GoogleFonts.inter(
       color: Theme.of(context).colorScheme.primary,
-      fontSize: 60,
+      fontSize: 55,
       fontWeight: FontWeight.w700,
     );
   }

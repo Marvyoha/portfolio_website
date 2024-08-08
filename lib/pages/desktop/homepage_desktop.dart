@@ -27,7 +27,46 @@ class HomepageDesktop extends StatefulWidget {
 }
 
 class _HomepageDesktopState extends State<HomepageDesktop> {
-  final PageController _controller = PageController();
+  final ScrollController _scrollController = ScrollController();
+
+  // Keys for each section
+  final GlobalKey _homeKey = GlobalKey();
+  final GlobalKey _aboutMeKey = GlobalKey();
+  final GlobalKey _qualificationsKey = GlobalKey();
+  final GlobalKey _skillsKey = GlobalKey();
+  final GlobalKey _projectsKey = GlobalKey();
+
+  void _scrollToSection(GlobalKey key) {
+    final context = key.currentContext!;
+    Scrollable.ensureVisible(context,
+        duration: const Duration(milliseconds: 780), curve: Curves.easeOut);
+  }
+
+  void _scrollToIndex(int index) {
+    double offset = 0.0;
+    switch (index) {
+      case 0:
+        offset = 0.0;
+        break;
+      case 1:
+        offset = widget.platformHeight;
+        break;
+      case 2:
+        offset = widget.platformHeight * 2;
+        break;
+      case 3:
+        offset = widget.platformHeight * 3;
+        break;
+      case 4:
+        offset = widget.platformHeight * 4;
+        break;
+    }
+    _scrollController.animateTo(
+      offset,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,48 +85,28 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
         actions: [
           TextButton(
             child: Text('Home', style: WriteStyles.body1Desktop(context)),
-            onPressed: () {
-              _controller.animateToPage(0,
-                  duration: const Duration(milliseconds: 780),
-                  curve: Curves.easeOut);
-            },
+            onPressed: () => _scrollToIndex(0),
           ),
           GlobalVariables.spaceSmaller(isWidth: true),
           TextButton(
             child: Text('About Me', style: WriteStyles.body1Desktop(context)),
-            onPressed: () {
-              _controller.animateToPage(1,
-                  duration: const Duration(milliseconds: 780),
-                  curve: Curves.easeOut);
-            },
+            onPressed: () => _scrollToSection(_aboutMeKey),
           ),
           GlobalVariables.spaceSmaller(isWidth: true),
           TextButton(
             child: Text('Qualifications',
                 style: WriteStyles.body1Desktop(context)),
-            onPressed: () {
-              _controller.animateToPage(2,
-                  duration: const Duration(milliseconds: 780),
-                  curve: Curves.easeOut);
-            },
+            onPressed: () => _scrollToSection(_qualificationsKey),
           ),
           GlobalVariables.spaceSmaller(isWidth: true),
           TextButton(
             child: Text('Skills', style: WriteStyles.body1Desktop(context)),
-            onPressed: () {
-              _controller.animateToPage(3,
-                  duration: const Duration(milliseconds: 780),
-                  curve: Curves.easeOut);
-            },
+            onPressed: () => _scrollToSection(_skillsKey),
           ),
           GlobalVariables.spaceSmaller(isWidth: true),
           TextButton(
             child: Text('Projects', style: WriteStyles.body1Desktop(context)),
-            onPressed: () {
-              _controller.animateToPage(4,
-                  duration: const Duration(milliseconds: 780),
-                  curve: Curves.easeOut);
-            },
+            onPressed: () => _scrollToIndex(4),
           ),
           GlobalVariables.spaceMedium(isWidth: true),
           IconButton(
@@ -123,24 +142,67 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
           ),
         ],
       ),
-      body: PageView(
-        pageSnapping: false,
-        scrollBehavior: const ScrollBehavior(),
-        scrollDirection: Axis.vertical,
-        controller: _controller,
-        onPageChanged: (value) {
-          setState(() {
-            onLastPage = (value == 4);
-          });
-        },
+      body: ListView(
+        controller: _scrollController,
         children: [
-          HomeContents(
-              platformHeight: widget.platformHeight,
-              platformWidth: widget.platformWidth),
-          const AboutMeContent(),
-          const QualificationsContent(),
-          const SkillsContent(),
-          const ProjectContent()
+          Container(
+            key: _homeKey,
+            color: Theme.of(context).colorScheme.surface,
+            child: Padding(
+              padding: GlobalVariables.desktopPadding,
+              child: HomeContents(
+                  platformHeight: widget.platformHeight,
+                  platformWidth: widget.platformWidth),
+            ),
+          ),
+          Center(
+            child: Container(
+              key: _aboutMeKey,
+              // height: widget.platformHeight * 0.8,
+              color: Theme.of(context).colorScheme.inverseSurface,
+              child: Padding(
+                padding: GlobalVariables.desktopPaddingMain,
+                child: AboutMeContent(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              key: _qualificationsKey,
+              color: Theme.of(context).colorScheme.surface,
+              child: Padding(
+                padding: GlobalVariables.desktopPaddingMain,
+                child: QualificationsContent(
+                    platformWidth: widget.platformWidth,
+                    platformHeight: widget.platformHeight),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              key: _skillsKey,
+              color: Theme.of(context).colorScheme.inverseSurface,
+              child: Padding(
+                padding: GlobalVariables.desktopPaddingMain,
+                child: SkillsContent(
+                    platformWidth: widget.platformWidth,
+                    platformHeight: widget.platformHeight),
+              ),
+            ),
+          ),
+          Center(
+              child: Container(
+            key: _projectsKey,
+            color: Theme.of(context).colorScheme.surface,
+            child: Padding(
+              padding: GlobalVariables.desktopPaddingMain,
+              child: ProjectContent(
+                  platformWidth: widget.platformWidth,
+                  platformHeight: widget.platformHeight),
+            ),
+          ))
         ],
       ),
     );

@@ -63,10 +63,18 @@ class _HomepageMobileState extends State<HomepageMobile> {
                 HomeContents(
                     platformHeight: widget.platformHeight,
                     platformWidth: widget.platformWidth),
-                const AboutMeContent(),
-                const QualificationsContent(),
-                const SkillsContent(),
-                const ProjectContent()
+                AboutMeContent(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth),
+                QualificationsContent(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth),
+                SkillsContent(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth),
+                ProjectContent(
+                    platformHeight: widget.platformHeight,
+                    platformWidth: widget.platformWidth)
               ],
             ),
           ),
