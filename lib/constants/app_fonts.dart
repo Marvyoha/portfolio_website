@@ -78,7 +78,7 @@ class WriteStyles {
 
   static TextStyle body1Desktop(BuildContext context) {
     return GoogleFonts.inter(
-      color: Theme.of(context).colorScheme.primary,
+      color: Theme.of(context).colorScheme.secondary,
       fontSize: 18,
       fontWeight: FontWeight.w400,
     );

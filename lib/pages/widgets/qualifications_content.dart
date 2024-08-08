@@ -4,6 +4,7 @@ import 'package:my_portfolio_website/constants/app_constants.dart';
 import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../components/education_widget.dart';
 import '../../components/section_header.dart';
 import '../../core/providers/layout_provider.dart';
 
@@ -71,9 +72,25 @@ class DesktopQualifications extends StatelessWidget {
           const SectionHeader(content: 'Education'),
           GlobalVariables.desktopSpaceMedium(
               platformHeight: platformHeight, platformWidth: platformWidth),
-          Row(
-            children: [],
-          )
+          EducationWidget(
+              image: '',
+              degree:
+                  'Bachelor of Computer Science: College of Pure and Applied Sciences',
+              school: 'Caleb University',
+              timeRange: '2020 - 2024',
+              location: 'Imota, Lagos, Nigeria',
+              platformHeight: platformHeight,
+              platformWidth: platformWidth),
+          GlobalVariables.desktopSpaceLarge(
+              platformHeight: platformHeight, platformWidth: platformWidth),
+          EducationWidget(
+              image: '',
+              degree: 'WASSCE',
+              school: 'CMS Grammar School',
+              timeRange: '2013 - 2019',
+              location: 'Bariga, Lagos, Nigeria',
+              platformHeight: platformHeight,
+              platformWidth: platformWidth),
         ],
       ),
     );

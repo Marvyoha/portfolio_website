@@ -12,7 +12,7 @@ class Content {
 
 // LINKS
   static final Uri cvLink = Uri.parse(
-      'https://drive.google.com/file/d/17tkOyPl30fP3-muALqLrhkuSAEp2klhn/view?usp=sharing');
+      'https://drive.google.com/file/d/17tkOyPl30fP3-muALqLrhkuSAEp2klhn/view?usp=drive_link');
   static final Uri githubLink = Uri.parse('https://github.com/Marvyoha');
   static final Uri linkedinLink =
       Uri.parse('https://www.linkedin.com/in/marvellous-olewuezi-9a9244321/');
