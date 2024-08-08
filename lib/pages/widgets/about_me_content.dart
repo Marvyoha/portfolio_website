@@ -4,6 +4,7 @@ import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../components/main_header.dart';
 import '../../components/section_header.dart';
 import '../../constants/app_constants.dart';
 import '../../constants/app_strings.dart';
@@ -89,13 +90,16 @@ class AboutMeDesktop extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const SectionHeader(
-          content: 'About me',
+        MainHeader(
+          content: 'About Me',
+          platformHeight: platformHeight,
+          platformWidth: platformWidth,
         ),
         GlobalVariables.desktopSpaceSmaller(
             platformHeight: platformHeight, platformWidth: platformWidth),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
                 flex: 2,
@@ -104,15 +108,18 @@ class AboutMeDesktop extends StatelessWidget {
                     maxWidth: platformWidth * 0.3,
                     // maxHeight: platformHeight * 0.45,
                   ),
-                  child: Material(
-                    shadowColor: Theme.of(context).colorScheme.secondary,
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(40),
-                    child: ClipRRect(
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Material(
+                      shadowColor: Theme.of(context).colorScheme.secondary,
+                      elevation: 5,
                       borderRadius: BorderRadius.circular(40),
-                      child: Image.asset(
-                        'lib/assets/profile2.jpeg',
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(40),
+                        child: Image.asset(
+                          'lib/assets/profile2.jpeg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

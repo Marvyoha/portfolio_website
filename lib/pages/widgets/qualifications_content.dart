@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio_website/components/main_header.dart';
+import 'package:my_portfolio_website/constants/app_constants.dart';
 import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -57,13 +59,21 @@ class DesktopQualifications extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          const SectionHeader(
-            content: 'Qualifications',
-          ),
-          Text(
-            'Qualifications for desktop.',
-            style: WriteStyles.header1Desktop(context),
-          ),
+          MainHeader(
+              content: 'Qualifications',
+              platformWidth: platformWidth,
+              platformHeight: platformHeight),
+          GlobalVariables.desktopSpaceMedium(
+              platformHeight: platformHeight, platformWidth: platformWidth),
+          const Divider(),
+          GlobalVariables.desktopSpaceMedium(
+              platformHeight: platformHeight, platformWidth: platformWidth),
+          const SectionHeader(content: 'Education'),
+          GlobalVariables.desktopSpaceMedium(
+              platformHeight: platformHeight, platformWidth: platformWidth),
+          Row(
+            children: [],
+          )
         ],
       ),
     );
