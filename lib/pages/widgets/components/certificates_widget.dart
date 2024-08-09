@@ -4,8 +4,8 @@ import 'package:my_portfolio_website/core/models/certificates_model.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants/app_fonts.dart';
-import '../core/providers/layout_provider.dart';
+import '../../../../../constants/app_fonts.dart';
+import '../../../../../core/providers/layout_provider.dart';
 
 class CertificatesWidget extends StatelessWidget {
   final CertificatesModel cert;
@@ -65,14 +65,14 @@ class CertificatesWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: platformWidth * 0.2,
+              width: platformWidth * 0.25,
               child: Text(
                 cert.course,
                 style: fontStyler(),
               ),
             ),
             SizedBox(
-              width: platformWidth * 0.2,
+              width: platformWidth * 0.25,
               child: Text(
                 'Issued by ${cert.issuedBy}',
                 style: WriteStyles.body2(context),
@@ -88,7 +88,7 @@ class CertificatesWidget extends StatelessWidget {
                 }
               },
               child: SizedBox(
-                width: platformWidth * 0.2,
+                width: platformWidth * 0.25,
                 child: Text(
                   'View Credential',
                   style: WriteStyles.body2(context)

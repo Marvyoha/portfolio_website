@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../constants/app_fonts.dart';
-import '../core/providers/layout_provider.dart';
+import '../../../../../constants/app_fonts.dart';
+import '../../../../../core/providers/layout_provider.dart';
 
 class MainHeader extends StatelessWidget {
   final String content;

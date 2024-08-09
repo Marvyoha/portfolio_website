@@ -1,10 +1,11 @@
+import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_website/constants/app_constants.dart';
 import 'package:my_portfolio_website/core/models/education_model.dart';
 import 'package:provider/provider.dart';
 
-import '../constants/app_fonts.dart';
-import '../core/providers/layout_provider.dart';
+import '../../../../../constants/app_fonts.dart';
+import '../../../../../core/providers/layout_provider.dart';
 
 class EducationWidget extends StatelessWidget {
   final EducationModel education;
@@ -92,14 +93,6 @@ class EducationWidget extends StatelessWidget {
               ],
             )
           ],
-        ),
-        GlobalVariables.desktopSpaceSmaller(
-          platformHeight: platformHeight,
-          platformWidth: platformWidth,
-        ),
-        GlobalVariables.desktopSpaceSmaller(
-          platformHeight: platformHeight,
-          platformWidth: platformWidth,
         ),
         GlobalVariables.desktopSpaceSmaller(
           platformHeight: platformHeight,

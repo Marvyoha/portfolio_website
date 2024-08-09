@@ -4,8 +4,8 @@ import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../components/main_header.dart';
-import '../../components/section_header.dart';
+import 'components/main_header.dart';
+
 import '../../constants/app_constants.dart';
 import '../../constants/app_strings.dart';
 import '../../core/providers/layout_provider.dart';

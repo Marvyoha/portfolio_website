@@ -1,3 +1,7 @@
+import '../core/models/certificates_model.dart';
+import '../core/models/education_model.dart';
+import '../core/models/experience_model.dart';
+
 class Content {
   static String name = 'Olewuezi Marvellous';
   static String email = 'olewuezimarvellous@gmail.com';
@@ -37,4 +41,66 @@ class Content {
   static String calebLogo = 'lib/assets/caleb_uni_logo.webp';
   static String googleLogo = 'lib/assets/google_logo.webp';
   static String ibmLogo = 'lib/assets/ibm_logo.webp';
+  static String exolveTechLogo = 'lib/assets/exolve_tech_logo.webp';
+
+  // QUALIFICATIONS CONTENT
+  static List<EducationModel> educationList = [
+    EducationModel(
+        image: Content.calebLogo,
+        degree:
+            'Bachelor of Computer Science: College of Pure and Applied Sciences',
+        school: 'Caleb University',
+        timeRange: '2020 - 2024',
+        location: 'Imota, Lagos, Nigeria'),
+    EducationModel(
+        image: Content.cmsLogo,
+        degree: 'WASSCE',
+        school: 'CMS Grammar School',
+        timeRange: '2013 - 2019',
+        location: 'Bariga, Lagos, Nigeria'),
+  ];
+  static List<ExperienceModel> experienceList = [
+    ExperienceModel(
+        image: Content.exolveTechLogo,
+        jobTitle: 'Mobile App Developer Intern',
+        jobDescription:
+            '''• Collaborated with senior developers to design, develop, and
+maintain mobile applications for both Android and iOS
+platforms.
+• Conducted thorough testing on new applications, identifying
+and resolving bugs to improve app functionality and reliability.
+• Assisted in the development of cross-platform solutions using
+Flutter, enabling consistent user experiences across multiple
+devices.
+• Worked closely with the UX and UI design team to ensure app
+designs were both attractive and intuitive for the end-user.''',
+        timeRange: '05/2023 - 11/2023')
+  ];
+  static List<CertificatesModel> certificatesList = [
+    CertificatesModel(
+        issuedBy: 'Google',
+        viewCredential: Content.certDigitalMarketing,
+        image: Content.googleLogo,
+        course: 'Introduction to Digital Marketing'),
+    CertificatesModel(
+        issuedBy: 'Google',
+        viewCredential: Content.certCrashCourseOnPython,
+        image: Content.googleLogo,
+        course: 'Crash Course on Python'),
+    CertificatesModel(
+        issuedBy: 'Google',
+        viewCredential: Content.certUsingPythonToInteractWithOS,
+        image: Content.googleLogo,
+        course: 'Python with the Operating System'),
+    CertificatesModel(
+        issuedBy: 'IBM',
+        viewCredential: Content.certIntroToWebDev,
+        image: Content.ibmLogo,
+        course: 'Introduction to Web Development'),
+    CertificatesModel(
+        issuedBy: 'IBM',
+        viewCredential: Content.certIntroToCloudComputing,
+        image: Content.ibmLogo,
+        course: 'Introduction to Cloud Computing'),
+  ];
 }
