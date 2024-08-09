@@ -395,7 +395,7 @@ class DesktopHome extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(40),
                     child: Image.asset(
-                      'lib/assets/profile.jpeg',
+                      Content.profile,
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -17,4 +17,24 @@ class Content {
   static final Uri linkedinLink =
       Uri.parse('https://www.linkedin.com/in/marvellous-olewuezi-9a9244321/');
   static final Uri emailLink = Uri.parse('olewuezimarvellous@gmail.com');
+
+// CERTIFICATES
+  static final Uri certDigitalMarketing = Uri.parse(
+      'https://drive.google.com/file/d/1XN17s0A6ls3TU058xM4VM7nMBMkMJZIs/view?usp=drive_link');
+  static final Uri certCrashCourseOnPython = Uri.parse(
+      'https://drive.google.com/file/d/1Ts6FJ1y1C1Ej43LZFDWMT9pNfD1h6a9A/view?usp=drive_link');
+  static final Uri certIntroToCloudComputing = Uri.parse(
+      'https://drive.google.com/file/d/1b952OZ3yGAQJz5rpnAnDeviv_Omi6cS6/view?usp=drive_link');
+  static final Uri certIntroToWebDev = Uri.parse(
+      'https://drive.google.com/file/d/1XDZEADiB94Nr4zM3gpPYuUt8tRbJZ06u/view?usp=drive_link');
+  static final Uri certUsingPythonToInteractWithOS = Uri.parse(
+      'https://drive.google.com/file/d/1c5S3F_rr6sbxZLVLrId9qoEJIDed0p74/view?usp=drive_link');
+
+// IMAGES
+  static String profile = 'lib/assets/profile.webp';
+  static String profile2 = 'lib/assets/profile2.webp';
+  static String cmsLogo = 'lib/assets/cms_logo.webp';
+  static String calebLogo = 'lib/assets/caleb_uni_logo.webp';
+  static String googleLogo = 'lib/assets/google_logo.webp';
+  static String ibmLogo = 'lib/assets/ibm_logo.webp';
 }

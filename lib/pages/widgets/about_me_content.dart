@@ -95,7 +95,7 @@ class AboutMeDesktop extends StatelessWidget {
           platformHeight: platformHeight,
           platformWidth: platformWidth,
         ),
-        GlobalVariables.desktopSpaceSmaller(
+        GlobalVariables.desktopSpaceLarge(
             platformHeight: platformHeight, platformWidth: platformWidth),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,7 +117,7 @@ class AboutMeDesktop extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child: Image.asset(
-                          'lib/assets/profile2.jpeg',
+                          Content.profile2,
                           fit: BoxFit.cover,
                         ),
                       ),
