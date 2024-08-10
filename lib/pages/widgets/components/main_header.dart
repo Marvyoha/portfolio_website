@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../constants/app_fonts.dart';
 import '../../../../../core/providers/layout_provider.dart';
+import '../../../constants/app_constants.dart';
 
 class MainHeader extends StatelessWidget {
   final String content;
@@ -50,7 +51,9 @@ class MainHeader extends StatelessWidget {
               width: platformWidth * 0.05,
             ),
           ],
-        )
+        ),
+        GlobalVariables.layoutSpaceLarge(
+            platformHeight: platformHeight, platformWidth: platformWidth),
       ],
     );
   }

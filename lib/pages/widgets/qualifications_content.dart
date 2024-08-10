@@ -68,13 +68,12 @@ class DesktopQualifications extends StatelessWidget {
             content: 'Qualifications',
             platformWidth: platformWidth,
             platformHeight: platformHeight),
-        GlobalVariables.desktopSpaceMedium(
-            platformHeight: platformHeight, platformWidth: platformWidth),
+
         // EDUCATION
         Column(
           children: [
             const SectionHeader(content: 'Education'),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Column(
               children: [
@@ -82,7 +81,7 @@ class DesktopQualifications extends StatelessWidget {
                     education: Content.educationList[0],
                     platformWidth: platformWidth,
                     platformHeight: platformHeight),
-                GlobalVariables.desktopSpaceMedium(
+                GlobalVariables.layoutSpaceMedium(
                   platformHeight: platformHeight,
                   platformWidth: platformWidth,
                 ),
@@ -101,7 +100,7 @@ class DesktopQualifications extends StatelessWidget {
         Column(
           children: [
             const SectionHeader(content: 'Certificates'),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,7 +117,7 @@ class DesktopQualifications extends StatelessWidget {
                 ),
               ],
             ),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +134,7 @@ class DesktopQualifications extends StatelessWidget {
                 ),
               ],
             ),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,7 +154,7 @@ class DesktopQualifications extends StatelessWidget {
         Column(
           children: [
             const SectionHeader(content: 'Experience'),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             ExperienceWidget(
                 exp: Content.experienceList[0],

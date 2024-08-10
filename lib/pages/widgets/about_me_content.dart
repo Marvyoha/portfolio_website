@@ -95,8 +95,6 @@ class AboutMeDesktop extends StatelessWidget {
           platformHeight: platformHeight,
           platformWidth: platformWidth,
         ),
-        GlobalVariables.desktopSpaceLarge(
-            platformHeight: platformHeight, platformWidth: platformWidth),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +122,7 @@ class AboutMeDesktop extends StatelessWidget {
                     ),
                   ),
                 )),
-            // GlobalVariables.desktopSpaceLarge(
+            // GlobalVariables.layoutSpaceLarge(
             //     platformHeight: platformHeight,
             //     platformWidth: platformWidth,
             //     isWidth: true),

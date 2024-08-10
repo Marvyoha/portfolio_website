@@ -11,12 +11,13 @@ environment:
 dependencies:
   carbon_icons: ^0.0.1+2
   cupertino_icons: ^1.0.6
+  dev_icons: ^1.0.0
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
   provider: ^6.1.2
-  url_launcher: ^6.3.0
   text_responsive: ^1.2.1
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0

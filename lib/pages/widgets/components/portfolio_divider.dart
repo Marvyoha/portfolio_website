@@ -30,10 +30,10 @@ class PortfolioDivider extends StatelessWidget {
 
     return Column(
       children: [
-        GlobalVariables.desktopSpaceLarge(
+        GlobalVariables.layoutSpaceLarge(
             platformHeight: platformHeight, platformWidth: platformWidth),
         const Divider(),
-        GlobalVariables.desktopSpaceLarge(
+        GlobalVariables.layoutSpaceLarge(
             platformHeight: platformHeight, platformWidth: platformWidth),
       ],
     );

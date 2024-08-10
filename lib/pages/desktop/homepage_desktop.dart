@@ -145,37 +145,37 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
       body: ListView(
         controller: _scrollController,
         children: [
-          Container(
-            key: _homeKey,
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: GlobalVariables.desktopPadding,
-              child: HomeContents(
-                  platformHeight: widget.platformHeight,
-                  platformWidth: widget.platformWidth),
-            ),
-          ),
-          Container(
-            key: _aboutMeKey,
-            // height: widget.platformHeight * 0.8,
-            color: Theme.of(context).colorScheme.inverseSurface,
-            child: Padding(
-              padding: GlobalVariables.desktopPaddingMain,
-              child: AboutMeContent(
-                  platformHeight: widget.platformHeight,
-                  platformWidth: widget.platformWidth),
-            ),
-          ),
-          Container(
-            key: _qualificationsKey,
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: GlobalVariables.desktopPaddingMain,
-              child: QualificationsContent(
-                  platformWidth: widget.platformWidth,
-                  platformHeight: widget.platformHeight),
-            ),
-          ),
+          // Container(
+          //   key: _homeKey,
+          //   color: Theme.of(context).colorScheme.surface,
+          //   child: Padding(
+          //     padding: GlobalVariables.desktopPadding,
+          //     child: HomeContents(
+          //         platformHeight: widget.platformHeight,
+          //         platformWidth: widget.platformWidth),
+          //   ),
+          // ),
+          // Container(
+          //   key: _aboutMeKey,
+          //   // height: widget.platformHeight * 0.8,
+          //   color: Theme.of(context).colorScheme.inverseSurface,
+          //   child: Padding(
+          //     padding: GlobalVariables.desktopPaddingMain,
+          //     child: AboutMeContent(
+          //         platformHeight: widget.platformHeight,
+          //         platformWidth: widget.platformWidth),
+          //   ),
+          // ),
+          // Container(
+          //   key: _qualificationsKey,
+          //   color: Theme.of(context).colorScheme.surface,
+          //   child: Padding(
+          //     padding: GlobalVariables.desktopPaddingMain,
+          //     child: QualificationsContent(
+          //         platformWidth: widget.platformWidth,
+          //         platformHeight: widget.platformHeight),
+          //   ),
+          // ),
           Container(
             key: _skillsKey,
             color: Theme.of(context).colorScheme.inverseSurface,

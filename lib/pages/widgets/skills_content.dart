@@ -1,8 +1,22 @@
+import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/models/skills_model.dart';
 import '../../core/providers/layout_provider.dart';
+import 'components/main_header.dart';
+import 'components/skills_widget.dart';
+
+List<SkillsModel> skillsList = [
+  SkillsModel(icon: DevIcons.dartPlain, skill: 'Dart'),
+  SkillsModel(icon: DevIcons.flutterPlain, skill: 'Flutter'),
+  SkillsModel(icon: DevIcons.javaPlain, skill: 'Java'),
+  SkillsModel(icon: DevIcons.pythonPlain, skill: 'Python'),
+  SkillsModel(icon: DevIcons.cplusplusPlain, skill: 'C++'),
+  SkillsModel(icon: DevIcons.firebasePlain, skill: 'Firebase'),
+  SkillsModel(icon: DevIcons.figmaPlain, skill: 'Figma')
+];
 
 class SkillsContent extends StatelessWidget {
   final double platformWidth;
@@ -31,15 +45,49 @@ class SkillsContent extends StatelessWidget {
             ),
           );
         case Platform.desktop:
-          return Center(
-            child: Text(
-              'Skills for desktop.',
-              style: WriteStyles.header1Desktop(context),
-            ),
+          return DesktopSkills(
+            platformWidth: platformWidth,
+            platformHeight: platformHeight,
           );
       }
     }
 
     return layoutChecker();
+  }
+}
+
+class DesktopSkills extends StatelessWidget {
+  final double platformWidth;
+  final double platformHeight;
+  const DesktopSkills({
+    super.key,
+    required this.platformWidth,
+    required this.platformHeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          MainHeader(
+              content: 'Skills',
+              platformWidth: platformWidth,
+              platformHeight: platformHeight),
+          Wrap(
+            spacing: 20, // Reduced spacing between items
+            runSpacing: platformHeight * 0.02,
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.start,
+            children: skillsList
+                .map((skills) => SkillsWidget(
+                    skills: skills,
+                    platformWidth: platformWidth,
+                    platformHeight: platformHeight))
+                .toList(),
+          ),
+        ],
+      ),
+    );
   }
 }

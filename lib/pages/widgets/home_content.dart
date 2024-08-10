@@ -306,7 +306,7 @@ class DesktopHome extends StatelessWidget {
                 style: WriteStyles.body1Desktop(context),
               ),
             ),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             // GlobalVariables.spaceMedium(),
             Row(
@@ -319,7 +319,7 @@ class DesktopHome extends StatelessWidget {
                 ),
               ],
             ),
-            GlobalVariables.desktopSpaceSmaller(
+            GlobalVariables.layoutSpaceSmaller(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Row(
               children: [
@@ -331,7 +331,7 @@ class DesktopHome extends StatelessWidget {
                 ),
               ],
             ),
-            GlobalVariables.desktopSpaceSmaller(
+            GlobalVariables.layoutSpaceSmaller(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Row(
               children: [
@@ -346,7 +346,7 @@ class DesktopHome extends StatelessWidget {
                 ),
               ],
             ),
-            GlobalVariables.desktopSpaceMedium(
+            GlobalVariables.layoutSpaceMedium(
                 platformHeight: platformHeight, platformWidth: platformWidth),
             Row(
               children: [

@@ -58,7 +58,7 @@ class EducationWidget extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            GlobalVariables.desktopSpaceSmaller(
+            GlobalVariables.layoutSpaceSmaller(
                 platformHeight: platformHeight,
                 platformWidth: platformWidth,
                 isWidth: true),
@@ -94,7 +94,7 @@ class EducationWidget extends StatelessWidget {
             )
           ],
         ),
-        GlobalVariables.desktopSpaceSmaller(
+        GlobalVariables.layoutSpaceSmaller(
           platformHeight: platformHeight,
           platformWidth: platformWidth,
         ),

@@ -76,7 +76,7 @@ class ExperienceWidget extends StatelessWidget {
                       style: fontStyler(),
                     ),
                   ),
-                  GlobalVariables.desktopSpaceMedium(
+                  GlobalVariables.layoutSpaceMedium(
                       platformHeight: platformHeight,
                       platformWidth: platformWidth),
                   SizedBox(

@@ -80,7 +80,7 @@ class GlobalVariables {
     );
   }
 
-  static desktopSpaceLarge(
+  static layoutSpaceLarge(
       {required double platformHeight,
       required double platformWidth,
       bool isWidth = false}) {
@@ -94,7 +94,7 @@ class GlobalVariables {
     );
   }
 
-  static desktopSpaceMedium(
+  static layoutSpaceMedium(
       {required double platformHeight,
       required double platformWidth,
       bool isWidth = false}) {
@@ -108,7 +108,7 @@ class GlobalVariables {
     );
   }
 
-  static desktopSpaceSmaller(
+  static layoutSpaceSmaller(
       {required double platformHeight,
       required double platformWidth,
       bool isWidth = false}) {

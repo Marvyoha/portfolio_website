@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
+
 class SkillsModel {
-  final String image;
+  final IconData icon;
   final String skill;
-  SkillsModel({required this.image, required this.skill});
+  SkillsModel({required this.icon, required this.skill});
 }
