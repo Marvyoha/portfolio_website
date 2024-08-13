@@ -1,5 +1,6 @@
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,38 +36,37 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
   final GlobalKey _qualificationsKey = GlobalKey();
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
-
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext!;
     Scrollable.ensureVisible(context,
         duration: const Duration(milliseconds: 780), curve: Curves.easeOut);
   }
 
-  void _scrollToIndex(int index) {
-    double offset = 0.0;
-    switch (index) {
-      case 0:
-        offset = 0.0;
-        break;
-      case 1:
-        offset = widget.platformHeight;
-        break;
-      case 2:
-        offset = widget.platformHeight * 2;
-        break;
-      case 3:
-        offset = widget.platformHeight * 3;
-        break;
-      case 4:
-        offset = widget.platformHeight * 4;
-        break;
-    }
-    _scrollController.animateTo(
-      offset,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
+  // void _scrollToIndex(int index) {
+  //   double offset = 0.0;
+  //   switch (index) {
+  //     case 0:
+  //       offset = 0.0;
+  //       break;
+  //     case 1:
+  //       offset = widget.platformHeight;
+  //       break;
+  //     case 2:
+  //       offset = widget.platformHeight * 2;
+  //       break;
+  //     case 3:
+  //       offset = widget.platformHeight * 3;
+  //       break;
+  //     case 4:
+  //       offset = widget.platformHeight * 4;
+  //       break;
+  //   }
+  //   _scrollController.animateTo(
+  //     offset,
+  //     duration: const Duration(milliseconds: 500),
+  //     curve: Curves.easeInOut,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -83,31 +83,30 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
           style: WriteStyles.header3Desktop(context),
         ),
         actions: [
-          TextButton(
-            child: Text('Home', style: WriteStyles.body1Desktop(context)),
-            onPressed: () => _scrollToIndex(0),
-          ),
-          GlobalVariables.spaceSmaller(isWidth: true),
-          TextButton(
-            child: Text('About Me', style: WriteStyles.body1Desktop(context)),
-            onPressed: () => _scrollToSection(_aboutMeKey),
-          ),
-          GlobalVariables.spaceSmaller(isWidth: true),
-          TextButton(
-            child: Text('Qualifications',
-                style: WriteStyles.body1Desktop(context)),
-            onPressed: () => _scrollToSection(_qualificationsKey),
-          ),
-          GlobalVariables.spaceSmaller(isWidth: true),
-          TextButton(
-            child: Text('Skills', style: WriteStyles.body1Desktop(context)),
-            onPressed: () => _scrollToSection(_skillsKey),
-          ),
-          GlobalVariables.spaceSmaller(isWidth: true),
-          TextButton(
-            child: Text('Projects', style: WriteStyles.body1Desktop(context)),
-            onPressed: () => _scrollToIndex(4),
-          ),
+          // TextButton(
+          //     child: Text('Home', style: WriteStyles.body1Desktop(context)),
+          //     onPressed: () => _scrollToSection(_homeKey)),
+          // GlobalVariables.spaceSmaller(isWidth: true),
+          // TextButton(
+          //   child: Text('About Me', style: WriteStyles.body1Desktop(context)),
+          //   onPressed: () => _scrollToSection(_aboutMeKey),
+          // ),
+          // GlobalVariables.spaceSmaller(isWidth: true),
+          // TextButton(
+          //   child: Text('Qualifications',
+          //       style: WriteStyles.body1Desktop(context)),
+          //   onPressed: () => _scrollToSection(_qualificationsKey),
+          // ),
+          // GlobalVariables.spaceSmaller(isWidth: true),
+          // TextButton(
+          //   child: Text('Skills', style: WriteStyles.body1Desktop(context)),
+          //   onPressed: () => _scrollToSection(_skillsKey),
+          // ),
+          // GlobalVariables.spaceSmaller(isWidth: true),
+          // TextButton(
+          //   child: Text('Projects', style: WriteStyles.body1Desktop(context)),
+          //   onPressed: () => _scrollToSection(_projectsKey),
+          // ),
           GlobalVariables.spaceMedium(isWidth: true),
           IconButton(
             icon: Icon(
@@ -145,37 +144,38 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
       body: ListView(
         controller: _scrollController,
         children: [
-          // Container(
-          //   key: _homeKey,
-          //   color: Theme.of(context).colorScheme.surface,
-          //   child: Padding(
-          //     padding: GlobalVariables.desktopPadding,
-          //     child: HomeContents(
-          //         platformHeight: widget.platformHeight,
-          //         platformWidth: widget.platformWidth),
-          //   ),
-          // ),
-          // Container(
-          //   key: _aboutMeKey,
-          //   // height: widget.platformHeight * 0.8,
-          //   color: Theme.of(context).colorScheme.inverseSurface,
-          //   child: Padding(
-          //     padding: GlobalVariables.desktopPaddingMain,
-          //     child: AboutMeContent(
-          //         platformHeight: widget.platformHeight,
-          //         platformWidth: widget.platformWidth),
-          //   ),
-          // ),
-          // Container(
-          //   key: _qualificationsKey,
-          //   color: Theme.of(context).colorScheme.surface,
-          //   child: Padding(
-          //     padding: GlobalVariables.desktopPaddingMain,
-          //     child: QualificationsContent(
-          //         platformWidth: widget.platformWidth,
-          //         platformHeight: widget.platformHeight),
-          //   ),
-          // ),
+          Container(
+            height: widget.platformHeight,
+            key: _homeKey,
+            color: Theme.of(context).colorScheme.surface,
+            child: Padding(
+              padding: GlobalVariables.desktopPadding,
+              child: HomeContents(
+                  platformHeight: widget.platformHeight,
+                  platformWidth: widget.platformWidth),
+            ),
+          ),
+          Container(
+            key: _aboutMeKey,
+            // height: widget.platformHeight * 0.8,
+            color: Theme.of(context).colorScheme.inverseSurface,
+            child: Padding(
+              padding: GlobalVariables.desktopPaddingMain,
+              child: AboutMeContent(
+                  platformHeight: widget.platformHeight,
+                  platformWidth: widget.platformWidth),
+            ),
+          ),
+          Container(
+            key: _qualificationsKey,
+            color: Theme.of(context).colorScheme.surface,
+            child: Padding(
+              padding: GlobalVariables.desktopPaddingMain,
+              child: QualificationsContent(
+                  platformWidth: widget.platformWidth,
+                  platformHeight: widget.platformHeight),
+            ),
+          ),
           Container(
             key: _skillsKey,
             color: Theme.of(context).colorScheme.inverseSurface,
@@ -186,8 +186,7 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
                   platformHeight: widget.platformHeight),
             ),
           ),
-          Center(
-              child: Container(
+          Container(
             key: _projectsKey,
             color: Theme.of(context).colorScheme.surface,
             child: Padding(
@@ -196,7 +195,7 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
                   platformWidth: widget.platformWidth,
                   platformHeight: widget.platformHeight),
             ),
-          ))
+          )
         ],
       ),
     );

@@ -1,8 +1,10 @@
 import '../core/models/certificates_model.dart';
 import '../core/models/education_model.dart';
 import '../core/models/experience_model.dart';
+import '../core/models/projects_model.dart';
 
 class Content {
+  //INFO
   static String name = 'Olewuezi Marvellous';
   static String email = 'olewuezimarvellous@gmail.com';
   static String introduction =
@@ -14,7 +16,7 @@ class Content {
   static String aboutMe =
       '''I'm Olewuezi Marvellous, a passionate and results-driven Mobile Developer based in Lagos, Nigeria. With a strong foundation in Computer Science and a keen interest in mobile application development, I specialize in creating innovative and user-friendly apps using Flutter and Dart.\n\nAs a recent graduate from Caleb University with a Bachelor's degree in Computer Science (CGPA: 4.04), I've honed my skills in various programming languages and technologies. My expertise spans Dart, Flutter, Java, Python, C++, and Firebase, allowing me to develop robust and efficient cross-platform mobile applications.\n\nI pride myself on writing clean, readable, and testable code. My approach to development is characterized by analytical thinking, problem-solving skills, and meticulous attention to detail. I thrive both independently and in team settings, always striving to apply the highest quality standards to create, grow, and maintain mobile app platforms.\n\nI have experience working with RESTful APIs. My knowledge extends to Android app development, and I'm well-versed in Firebase for backend solutions.\n\nContinuously eager to learn and grow, I've supplemented my formal education with various certifications from Google, including courses in Python, Cloud Computing, and Digital Marketing.\n\nI'm excited about the ever-evolving world of mobile technology and am committed to staying at the forefront of industry trends. My goal is to contribute my skills and passion to creating innovative mobile solutions that make a positive impact on users' lives.''';
 
-// LINKS
+// CREDENTIALS
   static final Uri cvLink = Uri.parse(
       'https://drive.google.com/file/d/17tkOyPl30fP3-muALqLrhkuSAEp2klhn/view?usp=drive_link');
   static final Uri githubLink = Uri.parse('https://github.com/Marvyoha');
@@ -102,5 +104,33 @@ designs were both attractive and intuitive for the end-user.''',
         viewCredential: Content.certIntroToCloudComputing,
         image: Content.ibmLogo,
         course: 'Introduction to Cloud Computing'),
+  ];
+
+// PROJECTS CONTENT
+  static String soleSeekers1 = 'lib/assets/soleSeekers1.webp';
+  static String soleSeekers2 = 'lib/assets/soleSeekers2.webp';
+  static String soleSeekers3 = 'lib/assets/soleSeekers3.webp';
+  static List<ProjectModel> projectList = [
+    ProjectModel(
+        projectTitle: 'SoleSeekers',
+        projectDescription:
+            '''SoleSeekers is the culmination of my final year project and a testament to my passion for mobile app development and e-commerce.\nSoleSeekers is an E-Commerce app which provides a seamless and immersive platform that caters to the diverse preferences of shoe lovers worldwide.''',
+        projectStack: [
+          'Dart',
+          'Flutter',
+          'Firebase Auth',
+          'Firebase FireStore',
+          'Firebase Storage',
+          'Third-party Packages',
+          'Figma',
+          'Git',
+          'GitHub'
+        ],
+        projectImage: [
+          Content.soleSeekers1,
+          Content.soleSeekers2,
+          Content.soleSeekers3
+        ],
+        projectLink: 'https://github.com/Marvyoha/sole_seekers_1_0')
   ];
 }
