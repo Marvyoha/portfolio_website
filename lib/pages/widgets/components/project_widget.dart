@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:carbon_icons/carbon_icons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_website/core/models/projects_model.dart';
@@ -87,7 +88,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                       platformHeight: widget.platformHeight,
                       platformWidth: widget.platformWidth),
                   Wrap(
-                    spacing: 20,
+                    spacing: 7,
                     runSpacing: widget.platformHeight * 0.02,
                     direction: Axis.horizontal,
                     alignment: WrapAlignment.start,
@@ -102,7 +103,10 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Text(stack),
+                        child: Text(
+                          stack,
+                          style: WriteStyles.body3(context),
+                        ),
                       );
                     }).toList(),
                   ),
@@ -123,16 +127,16 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                     ),
                     child: Container(
                       padding: const EdgeInsets.all(8),
-                      width: 145,
+                      width: 220,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('View Github',
+                          Text('View Source Code',
                               style: WriteStyles.body1Desktop(context).copyWith(
                                   color:
                                       Theme.of(context).colorScheme.surface)),
                           Icon(
-                            Icons.open_in_new_rounded,
+                            CarbonIcons.logo_github,
                             color: Theme.of(context).colorScheme.surface,
                           )
                         ],
@@ -145,7 +149,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
 
             // IMAGE CAROUSEL
             SizedBox(
-              width: widget.platformWidth * 0.3,
+              width: widget.platformWidth * 0.26,
               height: widget.platformHeight * 0.7,
               child: CarouselSlider(
                 items: widget.projects.projectImage.map((image) {
@@ -153,7 +157,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                     builder: (BuildContext context) {
                       return ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxWidth: widget.platformWidth * 0.3,
+                          maxWidth: widget.platformWidth * 0.32,
                           maxHeight: widget.platformHeight * 0.7,
                         ),
                         child: Image.asset(

@@ -91,7 +91,7 @@ class ExperienceWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: SizedBox(
-                  width: platformWidth * 0.2,
+                  width: platformWidth * 0.15,
                   child: Text(
                     exp.timeRange,
                     style: WriteStyles.body2(context),

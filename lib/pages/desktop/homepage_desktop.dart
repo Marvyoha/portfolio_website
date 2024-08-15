@@ -1,6 +1,7 @@
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:my_portfolio_website/pages/widgets/get_in_touch_content.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,6 +37,7 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
   final GlobalKey _qualificationsKey = GlobalKey();
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
+  final GlobalKey _getInTouchKey = GlobalKey();
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext!;
     Scrollable.ensureVisible(context,
@@ -60,6 +62,9 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
   //     case 4:
   //       offset = widget.platformHeight * 4;
   //       break;
+  //     case 5:
+  //       offset = widget.platformHeight * 5;
+  //       break;
   //   }
   //   _scrollController.animateTo(
   //     offset,
@@ -77,125 +82,154 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
         Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(
-        title: Text(
-          Content.name,
-          style: WriteStyles.header3Desktop(context),
-        ),
-        actions: [
-          // TextButton(
-          //     child: Text('Home', style: WriteStyles.body1Desktop(context)),
-          //     onPressed: () => _scrollToSection(_homeKey)),
-          // GlobalVariables.spaceSmaller(isWidth: true),
-          // TextButton(
-          //   child: Text('About Me', style: WriteStyles.body1Desktop(context)),
-          //   onPressed: () => _scrollToSection(_aboutMeKey),
-          // ),
-          // GlobalVariables.spaceSmaller(isWidth: true),
-          // TextButton(
-          //   child: Text('Qualifications',
-          //       style: WriteStyles.body1Desktop(context)),
-          //   onPressed: () => _scrollToSection(_qualificationsKey),
-          // ),
-          // GlobalVariables.spaceSmaller(isWidth: true),
-          // TextButton(
-          //   child: Text('Skills', style: WriteStyles.body1Desktop(context)),
-          //   onPressed: () => _scrollToSection(_skillsKey),
-          // ),
-          // GlobalVariables.spaceSmaller(isWidth: true),
-          // TextButton(
-          //   child: Text('Projects', style: WriteStyles.body1Desktop(context)),
-          //   onPressed: () => _scrollToSection(_projectsKey),
-          // ),
-          GlobalVariables.spaceMedium(isWidth: true),
-          IconButton(
-            icon: Icon(
-                themeProvider.isLight ? CarbonIcons.sun : CarbonIcons.moon),
-            onPressed: () {
-              Provider.of<ThemeProvider>(context, listen: false)
-                  .toggleTheme(context);
-            },
-          ),
-          GlobalVariables.spaceSmaller(isWidth: true),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size.fromHeight(36),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-              onPressed: () async {
-                if (await canLaunchUrl(Content.cvLink)) {
-                  await launchUrl(Content.cvLink,
-                      mode: LaunchMode.externalApplication);
-                } else {
-                  throw 'Could not launch ${Content.cvLink}';
-                }
-              },
-              child: Text('View CV',
-                  style: WriteStyles.body1Desktop(context)
-                      .copyWith(color: Theme.of(context).colorScheme.surface)),
-            ),
-          ),
-        ],
-      ),
-      body: ListView(
-        controller: _scrollController,
+      // appBar: AppBar(
+      //   title:
+      //   actions: [
+      //     // TextButton(
+      //     //     child: Text('Home', style: WriteStyles.body1Desktop(context)),
+      //     //     onPressed: () => _scrollToSection(_homeKey)),
+      //     // GlobalVariables.spaceSmaller(isWidth: true),
+      //     // TextButton(
+      //     //   child: Text('About Me', style: WriteStyles.body1Desktop(context)),
+      //     //   onPressed: () => _scrollToSection(_aboutMeKey),
+      //     // ),
+      //     // GlobalVariables.spaceSmaller(isWidth: true),
+      //     // TextButton(
+      //     //   child: Text('Qualifications',
+      //     //       style: WriteStyles.body1Desktop(context)),
+      //     //   onPressed: () => _scrollToSection(_qualificationsKey),
+      //     // ),
+      //     // GlobalVariables.spaceSmaller(isWidth: true),
+      //     // TextButton(
+      //     //   child: Text('Skills', style: WriteStyles.body1Desktop(context)),
+      //     //   onPressed: () => _scrollToSection(_skillsKey),
+      //     // ),
+      //     // GlobalVariables.spaceSmaller(isWidth: true),
+      //     // TextButton(
+      //     //   child: Text('Projects', style: WriteStyles.body1Desktop(context)),
+      //     //   onPressed: () => _scrollToSection(_projectsKey),
+      //     // ),
+      //   ],
+      // ),
+      body: Column(
         children: [
-          Container(
-            height: widget.platformHeight,
-            key: _homeKey,
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: GlobalVariables.desktopPadding,
-              child: HomeContents(
-                  platformHeight: widget.platformHeight,
-                  platformWidth: widget.platformWidth),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(100, 10, 100, 3),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  Content.name,
+                  style: WriteStyles.header3Desktop(context),
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(themeProvider.isLight
+                          ? CarbonIcons.sun
+                          : CarbonIcons.moon),
+                      onPressed: () {
+                        Provider.of<ThemeProvider>(context, listen: false)
+                            .toggleTheme(context);
+                      },
+                    ),
+                    GlobalVariables.spaceSmaller(isWidth: true),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: const Size.fromHeight(36),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        onPressed: () async {
+                          if (await canLaunchUrl(Content.cvLink)) {
+                            await launchUrl(Content.cvLink,
+                                mode: LaunchMode.externalApplication);
+                          } else {
+                            throw 'Could not launch ${Content.cvLink}';
+                          }
+                        },
+                        child: Text('View CV',
+                            style: WriteStyles.body1Desktop(context).copyWith(
+                                color: Theme.of(context).colorScheme.surface)),
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
-          Container(
-            key: _aboutMeKey,
-            // height: widget.platformHeight * 0.8,
-            color: Theme.of(context).colorScheme.inverseSurface,
-            child: Padding(
-              padding: GlobalVariables.desktopPaddingMain,
-              child: AboutMeContent(
-                  platformHeight: widget.platformHeight,
-                  platformWidth: widget.platformWidth),
+          Flexible(
+            child: ListView(
+              controller: _scrollController,
+              children: [
+                Container(
+                  key: _homeKey,
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Padding(
+                    padding: GlobalVariables.desktopPadding,
+                    child: HomeContents(
+                        platformHeight: widget.platformHeight,
+                        platformWidth: widget.platformWidth),
+                  ),
+                ),
+                Container(
+                  key: _aboutMeKey,
+                  // height: widget.platformHeight * 0.8,
+                  color: Theme.of(context).colorScheme.inverseSurface,
+                  child: Padding(
+                    padding: GlobalVariables.desktopPaddingMain,
+                    child: AboutMeContent(
+                        platformHeight: widget.platformHeight,
+                        platformWidth: widget.platformWidth),
+                  ),
+                ),
+                Container(
+                  key: _qualificationsKey,
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Padding(
+                    padding: GlobalVariables.desktopPaddingMain,
+                    child: QualificationsContent(
+                        platformWidth: widget.platformWidth,
+                        platformHeight: widget.platformHeight),
+                  ),
+                ),
+                Container(
+                  key: _skillsKey,
+                  color: Theme.of(context).colorScheme.inverseSurface,
+                  child: Padding(
+                    padding: GlobalVariables.desktopPaddingMain,
+                    child: SkillsContent(
+                        platformWidth: widget.platformWidth,
+                        platformHeight: widget.platformHeight),
+                  ),
+                ),
+                Container(
+                  key: _projectsKey,
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Padding(
+                    padding: GlobalVariables.desktopPaddingMain,
+                    child: ProjectContent(
+                        platformWidth: widget.platformWidth,
+                        platformHeight: widget.platformHeight),
+                  ),
+                ),
+                Container(
+                  key: _getInTouchKey,
+                  color: Theme.of(context).colorScheme.inverseSurface,
+                  child: Padding(
+                    padding: GlobalVariables.desktopPaddingMain,
+                    child: GetInTouchContent(
+                        platformWidth: widget.platformWidth,
+                        platformHeight: widget.platformHeight),
+                  ),
+                ),
+              ],
             ),
           ),
-          Container(
-            key: _qualificationsKey,
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: GlobalVariables.desktopPaddingMain,
-              child: QualificationsContent(
-                  platformWidth: widget.platformWidth,
-                  platformHeight: widget.platformHeight),
-            ),
-          ),
-          Container(
-            key: _skillsKey,
-            color: Theme.of(context).colorScheme.inverseSurface,
-            child: Padding(
-              padding: GlobalVariables.desktopPaddingMain,
-              child: SkillsContent(
-                  platformWidth: widget.platformWidth,
-                  platformHeight: widget.platformHeight),
-            ),
-          ),
-          Container(
-            key: _projectsKey,
-            color: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: GlobalVariables.desktopPaddingMain,
-              child: ProjectContent(
-                  platformWidth: widget.platformWidth,
-                  platformHeight: widget.platformHeight),
-            ),
-          )
         ],
       ),
     );

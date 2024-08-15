@@ -129,14 +129,17 @@ class AboutMeDesktop extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  width: platformWidth * 0.5,
+                  width: platformWidth * 0.47,
                   child: Text(
                     Content.aboutMeIntro,
                     style: WriteStyles.header3Desktop(context),
                   ),
                 ),
+                GlobalVariables.layoutSpaceSmaller(
+                    platformHeight: platformHeight,
+                    platformWidth: platformWidth),
                 SizedBox(
-                  width: platformWidth * 0.5,
+                  width: platformWidth * 0.47,
                   child: Text(
                     Content.aboutMe,
                     style: WriteStyles.body2(context),

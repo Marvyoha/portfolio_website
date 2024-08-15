@@ -18,9 +18,9 @@ class GlobalVariables {
   }
 
   static EdgeInsetsGeometry desktopPadding =
-      const EdgeInsets.fromLTRB(80, 100, 80, 100);
+      const EdgeInsets.fromLTRB(100, 100, 100, 100);
   static EdgeInsetsGeometry desktopPaddingMain =
-      const EdgeInsets.fromLTRB(80, 56, 80, 100);
+      const EdgeInsets.fromLTRB(100, 56, 100, 100);
 
   static EdgeInsetsGeometry mobilePadding =
       const EdgeInsets.symmetric(horizontal: 16);

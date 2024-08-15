@@ -6,6 +6,7 @@ import '../core/models/projects_model.dart';
 class Content {
   //INFO
   static String name = 'Olewuezi Marvellous';
+  static String phoneNumber = '08074307345';
   static String email = 'olewuezimarvellous@gmail.com';
   static String introduction =
       "I am a mobile app developer specializing in Flutter development. With an intermediate level of expertise, I've honed my skills in creating cross-platform mobile applications that run seamlessly on both iOS and Android devices. My passion for mobile technology and user-centric design drives me to continuously improve my Flutter proficiency and stay updated with the latest trends in app development.";
@@ -110,6 +111,19 @@ designs were both attractive and intuitive for the end-user.''',
   static String soleSeekers1 = 'lib/assets/soleSeekers1.webp';
   static String soleSeekers2 = 'lib/assets/soleSeekers2.webp';
   static String soleSeekers3 = 'lib/assets/soleSeekers3.webp';
+  static String soleSeekers4 = 'lib/assets/soleSeekers4.webp';
+  static String carcare1 = 'lib/assets/carcare1.webp';
+  static String carcare2 = 'lib/assets/carcare2.webp';
+  static String carcare3 = 'lib/assets/carcare3.webp';
+  static String carcare4 = 'lib/assets/carcare4.webp';
+  static String cosmic1 = 'lib/assets/cosmic1.webp';
+  static String cosmic2 = 'lib/assets/cosmic2.webp';
+  static String cosmic3 = 'lib/assets/cosmic3.webp';
+  static String cosmic4 = 'lib/assets/cosmic4.webp';
+  static String kamp1 = 'lib/assets/kamp1.webp';
+  static String kamp2 = 'lib/assets/kamp2.webp';
+  static String kamp3 = 'lib/assets/kamp3.webp';
+  static String kamp4 = 'lib/assets/kamp4.webp';
   static List<ProjectModel> projectList = [
     ProjectModel(
         projectTitle: 'SoleSeekers',
@@ -126,11 +140,50 @@ designs were both attractive and intuitive for the end-user.''',
           'Git',
           'GitHub'
         ],
-        projectImage: [
-          Content.soleSeekers1,
-          Content.soleSeekers2,
-          Content.soleSeekers3
+        projectImage: [soleSeekers1, soleSeekers2, soleSeekers3, soleSeekers4],
+        projectLink: 'https://github.com/Marvyoha/sole_seekers_1_0'),
+    ProjectModel(
+        projectTitle: 'Cosmic',
+        projectDescription:
+            '''Cosmic is an educational app focused on teaching users about the Sun and planets in our solar system. The app includes detailed information on the 10 main celestial bodies - the Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto.''',
+        projectStack: [
+          'Dart',
+          'Flutter',
+          'Firebase Auth',
+          'Third-party Packages',
+          'Figma',
+          'Git',
+          'GitHub'
         ],
-        projectLink: 'https://github.com/Marvyoha/sole_seekers_1_0')
+        projectImage: [cosmic1, cosmic2, cosmic3, cosmic4],
+        projectLink: 'https://github.com/Marvyoha/cosmic-app'),
+    ProjectModel(
+        projectTitle: 'Kamp',
+        projectDescription:
+            '''Kamp is a dynamic platform designed to bridge the gap between founders, investors, and talents. Whether you're an aspiring entrepreneur seeking funding and a skilled team, a seasoned investor hunting for promising startups, or a talented professional looking for your next big opportunity, Kamp is your go-to platform.''',
+        projectStack: [
+          'Dart',
+          'Flutter',
+          'Third-party Packages',
+          'Figma',
+          'Git',
+          'GitHub'
+        ],
+        projectImage: [kamp1, kamp2, kamp3, kamp4],
+        projectLink: 'https://github.com/Marvyoha/kamp_app'),
+    ProjectModel(
+        projectTitle: 'Car Care',
+        projectDescription:
+            '''Car Care app is an app built to help car owners better manage maintenance and services for their vehicles. My primary role on the project was taking the initial UI/UX design comps and converting them into a UI-ready mobile application using flutter.''',
+        projectStack: [
+          'Dart',
+          'Flutter',
+          'Third-party Packages',
+          'Figma',
+          'Git',
+          'GitHub'
+        ],
+        projectImage: [carcare1, carcare2, carcare3, carcare4],
+        projectLink: 'https://github.com/Marvyoha/car_care_app')
   ];
 }

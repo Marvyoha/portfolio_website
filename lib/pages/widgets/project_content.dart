@@ -64,14 +64,25 @@ class DesktopProjects extends StatelessWidget {
             platformWidth: platformWidth,
             platformHeight: platformHeight),
         SizedBox(
-          height: platformHeight * Content.projectList.length,
+          height: platformHeight * (Content.projectList.length - 0.3),
           child: ListView.builder(
             itemCount: Content.projectList.length,
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return ProjectWidget(
-                projects: Content.projectList[index],
-                platformWidth: platformWidth,
-                platformHeight: platformHeight,
+              return Column(
+                children: [
+                  ProjectWidget(
+                    projects: Content.projectList[index],
+                    platformWidth: platformWidth,
+                    platformHeight: platformHeight,
+                  ),
+                  GlobalVariables.layoutSpaceLarge(
+                      platformHeight: platformHeight,
+                      platformWidth: platformWidth),
+                  GlobalVariables.layoutSpaceLarge(
+                      platformHeight: platformHeight,
+                      platformWidth: platformWidth)
+                ],
               );
             },
           ),

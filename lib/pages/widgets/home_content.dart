@@ -293,14 +293,14 @@ class DesktopHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: platformWidth * 0.6,
+              width: platformWidth * 0.5,
               child: Text(
                 Content.introHeader,
                 style: WriteStyles.header1Desktop(context),
               ),
             ),
             SizedBox(
-              width: platformWidth * 0.6,
+              width: platformWidth * 0.5,
               child: Text(
                 Content.introduction,
                 style: WriteStyles.body1Desktop(context),

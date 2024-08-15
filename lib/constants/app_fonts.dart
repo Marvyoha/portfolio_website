@@ -5,7 +5,7 @@ class WriteStyles {
   static TextStyle header1Desktop(BuildContext context) {
     return GoogleFonts.inter(
       color: Theme.of(context).colorScheme.primary,
-      fontSize: 55,
+      fontSize: 50,
       fontWeight: FontWeight.w700,
     );
   }
@@ -13,7 +13,7 @@ class WriteStyles {
   static TextStyle header1Tablet(BuildContext context) {
     return GoogleFonts.inter(
       color: Theme.of(context).colorScheme.primary,
-      fontSize: 48,
+      fontSize: 43,
       fontWeight: FontWeight.w700,
     );
   }
@@ -22,7 +22,7 @@ class WriteStyles {
   static TextStyle header1Mobile(BuildContext context) {
     return GoogleFonts.inter(
       color: Theme.of(context).colorScheme.primary,
-      fontSize: 36,
+      fontSize: 31,
       fontWeight: FontWeight.w600,
     );
   }
