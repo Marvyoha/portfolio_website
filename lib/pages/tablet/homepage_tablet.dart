@@ -41,13 +41,13 @@ class _HomepageTabletState extends State<HomepageTablet> {
         Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          Content.name,
-          style: WriteStyles.header2TabletandMobile(context),
-        ),
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text(
+      //     Content.name,
+      //     style: WriteStyles.header2TabletandMobile(context),
+      //   ),
+      // ),
       body: RefreshIndicator(
         onRefresh: _handleRefresh,
         child: Column(
