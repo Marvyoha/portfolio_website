@@ -1,7 +1,10 @@
+import 'package:dev_icons/dev_icons.dart';
+
 import '../core/models/certificates_model.dart';
 import '../core/models/education_model.dart';
 import '../core/models/experience_model.dart';
 import '../core/models/projects_model.dart';
+import '../core/models/skills_model.dart';
 
 class Content {
   //INFO
@@ -46,7 +49,8 @@ class Content {
   static String ibmLogo = 'lib/assets/ibm_logo.webp';
   static String exolveTechLogo = 'lib/assets/exolve_tech_logo.webp';
 
-  // QUALIFICATIONS CONTENT
+  // QUALIFICATIONS CONTENT ( AUTOMATIC RENDERING FOR MOBILE AND TABLET)
+  //* HAVE TO DO MANUAL RENDERING FOR CERTIFICATES ONLY FOR DESKTOP @ lib\pages\widgets\qualifications_content.dart
   static List<EducationModel> educationList = [
     EducationModel(
         image: Content.calebLogo,
@@ -105,6 +109,17 @@ designs were both attractive and intuitive for the end-user.''',
         viewCredential: Content.certIntroToCloudComputing,
         image: Content.ibmLogo,
         course: 'Introduction to Cloud Computing'),
+  ];
+
+// SKILLS CONTENT (AUTOMATIC RENDERING)
+  static List<SkillsModel> skillsList = [
+    SkillsModel(icon: DevIcons.dartPlain, skill: 'Dart'),
+    SkillsModel(icon: DevIcons.flutterPlain, skill: 'Flutter'),
+    SkillsModel(icon: DevIcons.javaPlain, skill: 'Java'),
+    SkillsModel(icon: DevIcons.pythonPlain, skill: 'Python'),
+    SkillsModel(icon: DevIcons.cplusplusPlain, skill: 'C++'),
+    SkillsModel(icon: DevIcons.firebasePlain, skill: 'Firebase'),
+    SkillsModel(icon: DevIcons.figmaPlain, skill: 'Figma')
   ];
 
 // PROJECTS CONTENT

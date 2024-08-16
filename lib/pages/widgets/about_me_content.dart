@@ -1,8 +1,7 @@
-import 'package:carbon_icons/carbon_icons.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'components/main_header.dart';
 
@@ -51,10 +50,54 @@ class AboutMeMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'About me for tablet.',
-      style: WriteStyles.header1Tablet(context),
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      MainHeader(
+        content: 'About Me',
+        platformHeight: platformHeight,
+        platformWidth: platformWidth,
+      ),
+      Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: platformWidth * 0.6,
+            maxHeight: platformHeight * 0.4,
+          ),
+          child: Material(
+            shadowColor: Theme.of(context).colorScheme.secondary,
+            elevation: 5,
+            borderRadius: BorderRadius.circular(40),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: Image.asset(
+                Content.profile2,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
+      GlobalVariables.layoutSpaceMedium(
+          platformHeight: platformHeight, platformWidth: platformWidth),
+      Column(
+        children: [
+          Text(
+            Content.aboutMeIntro,
+            style: WriteStyles.header3TabletandMobile(context),
+          ),
+          GlobalVariables.layoutSpaceSmaller(
+              platformHeight: platformHeight, platformWidth: platformWidth),
+          ExpandableText(
+            Content.aboutMe,
+            style: WriteStyles.body3(context),
+            linkEllipsis: false,
+            linkColor: Theme.of(context).colorScheme.outline,
+            expandText: 'Show more',
+            collapseText: 'Show less',
+            maxLines: 15,
+          )
+        ],
+      ),
+    ]);
   }
 }
 
@@ -69,10 +112,54 @@ class AboutMeTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'About me for tablet.',
-      style: WriteStyles.header1Tablet(context),
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      MainHeader(
+        content: 'About Me',
+        platformHeight: platformHeight,
+        platformWidth: platformWidth,
+      ),
+      Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: platformWidth * 0.55,
+            maxHeight: platformHeight * 0.45,
+          ),
+          child: Material(
+            shadowColor: Theme.of(context).colorScheme.secondary,
+            elevation: 5,
+            borderRadius: BorderRadius.circular(40),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: Image.asset(
+                Content.profile2,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
+      GlobalVariables.layoutSpaceMedium(
+          platformHeight: platformHeight, platformWidth: platformWidth),
+      Column(
+        children: [
+          Text(
+            Content.aboutMeIntro,
+            style: WriteStyles.header3Desktop(context),
+          ),
+          GlobalVariables.layoutSpaceSmaller(
+              platformHeight: platformHeight, platformWidth: platformWidth),
+          ExpandableText(
+            Content.aboutMe,
+            style: WriteStyles.body1TabletandMobile(context),
+            linkEllipsis: false,
+            linkColor: Theme.of(context).colorScheme.outline,
+            expandText: 'Show more',
+            collapseText: 'Show less',
+            maxLines: 15,
+          )
+        ],
+      ),
+    ]);
   }
 }
 

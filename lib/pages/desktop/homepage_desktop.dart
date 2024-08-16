@@ -168,54 +168,44 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
               children: [
                 Container(
                   key: _homeKey,
+                  padding: GlobalVariables.desktopPadding,
                   color: Theme.of(context).colorScheme.surface,
-                  child: Padding(
-                    padding: GlobalVariables.desktopPadding,
-                    child: HomeContents(
-                        platformHeight: widget.platformHeight,
-                        platformWidth: widget.platformWidth),
-                  ),
+                  child: HomeContents(
+                      platformHeight: widget.platformHeight,
+                      platformWidth: widget.platformWidth),
                 ),
                 Container(
                   key: _aboutMeKey,
                   // height: widget.platformHeight * 0.8,
+                  padding: GlobalVariables.desktopPaddingMain,
                   color: Theme.of(context).colorScheme.inverseSurface,
-                  child: Padding(
-                    padding: GlobalVariables.desktopPaddingMain,
-                    child: AboutMeContent(
-                        platformHeight: widget.platformHeight,
-                        platformWidth: widget.platformWidth),
-                  ),
+                  child: AboutMeContent(
+                      platformHeight: widget.platformHeight,
+                      platformWidth: widget.platformWidth),
                 ),
                 Container(
                   key: _qualificationsKey,
                   color: Theme.of(context).colorScheme.surface,
-                  child: Padding(
-                    padding: GlobalVariables.desktopPaddingMain,
-                    child: QualificationsContent(
-                        platformWidth: widget.platformWidth,
-                        platformHeight: widget.platformHeight),
-                  ),
+                  padding: GlobalVariables.desktopPaddingMain,
+                  child: QualificationsContent(
+                      platformWidth: widget.platformWidth,
+                      platformHeight: widget.platformHeight),
                 ),
                 Container(
                   key: _skillsKey,
+                  padding: GlobalVariables.desktopPaddingMain,
                   color: Theme.of(context).colorScheme.inverseSurface,
-                  child: Padding(
-                    padding: GlobalVariables.desktopPaddingMain,
-                    child: SkillsContent(
-                        platformWidth: widget.platformWidth,
-                        platformHeight: widget.platformHeight),
-                  ),
+                  child: SkillsContent(
+                      platformWidth: widget.platformWidth,
+                      platformHeight: widget.platformHeight),
                 ),
                 Container(
                   key: _projectsKey,
+                  padding: GlobalVariables.desktopPaddingMain,
                   color: Theme.of(context).colorScheme.surface,
-                  child: Padding(
-                    padding: GlobalVariables.desktopPaddingMain,
-                    child: ProjectContent(
-                        platformWidth: widget.platformWidth,
-                        platformHeight: widget.platformHeight),
-                  ),
+                  child: ProjectContent(
+                      platformWidth: widget.platformWidth,
+                      platformHeight: widget.platformHeight),
                 ),
                 Container(
                   key: _getInTouchKey,

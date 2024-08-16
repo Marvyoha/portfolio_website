@@ -1,5 +1,3 @@
-import '../../constants/app_strings.dart';
-
 class EducationModel {
   final String image;
   final String degree;

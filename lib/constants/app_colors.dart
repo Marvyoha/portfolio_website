@@ -6,7 +6,7 @@ ThemeData lightMode = ThemeData(
         brightness: Brightness.light,
         surface: Color(0xffFFFFFF), // BACKGROUND COLOR, PROJECT CARD BACKGROUND
         inverseSurface: Color(0xffF9FAFB), // PROJECT CARD BACKGROUND ALT
-        scrim: Color(0xffffffff), // CAARD COLOR
+        scrim: Color(0xffffffff), // CARD COLOR
         primary: Color(0xff111827), // MAIN TEXT COLOR
         secondary: Color(
             0xFF4b5563), // SECONDARY TEXT COLOR (FOR SUBTITLES AND HEADER TEXT)

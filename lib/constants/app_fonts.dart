@@ -87,7 +87,7 @@ class WriteStyles {
   static TextStyle body1TabletandMobile(BuildContext context) {
     return GoogleFonts.inter(
       color: Theme.of(context).colorScheme.secondary,
-      fontSize: 16,
+      fontSize: 17,
       fontStyle: FontStyle.normal,
       fontWeight: FontWeight.w500,
     );

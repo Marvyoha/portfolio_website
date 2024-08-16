@@ -4,7 +4,7 @@ import 'package:my_portfolio_website/constants/app_constants.dart';
 import 'package:my_portfolio_website/constants/app_fonts.dart';
 import 'package:my_portfolio_website/constants/app_strings.dart';
 import 'package:provider/provider.dart';
-import 'package:text_responsive/text_responsive.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/providers/layout_provider.dart';
@@ -51,108 +51,113 @@ class MobileHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: GlobalVariables.mobilePadding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: platformWidth * 0.6,
-                maxHeight: 200,
-              ),
-              child: Material(
-                shadowColor: Theme.of(context).colorScheme.secondary,
-                elevation: 5,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: platformWidth * 0.6,
+              maxHeight: platformHeight * 0.45,
+            ),
+            child: Material(
+              shadowColor: Theme.of(context).colorScheme.secondary,
+              elevation: 5,
+              borderRadius: BorderRadius.circular(40),
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(40),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40),
-                  child: Image.asset(
-                    'lib/assets/profile.jpeg',
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.asset(
+                  Content.profile,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-          GlobalVariables.spaceSmall(),
-          Text(
-            Content.introHeader,
-            style: WriteStyles.header1Mobile(context),
-          ),
-          GlobalVariables.spaceSmallest(),
-          Text(
-            Content.introduction,
-            style: WriteStyles.body1TabletandMobile(context),
-          ),
-          GlobalVariables.spaceSmall(),
-          Row(
-            children: [
-              const Icon(CarbonIcons.location),
-              GlobalVariables.spaceSmaller(isWidth: true),
-              Text(
-                Content.location,
-                style: WriteStyles.body1TabletandMobile(context),
+        ),
+        GlobalVariables.spaceSmall(),
+        Text(
+          Content.introHeader,
+          style: WriteStyles.header1Mobile(context),
+        ),
+        GlobalVariables.spaceSmallest(),
+        Text(
+          Content.introduction,
+          style: WriteStyles.body1TabletandMobile(context),
+        ),
+        GlobalVariables.spaceSmall(),
+        Row(
+          children: [
+            const Icon(CarbonIcons.location),
+            GlobalVariables.spaceSmaller(isWidth: true),
+            Text(
+              Content.location,
+              style: WriteStyles.body1TabletandMobile(context),
+            ),
+          ],
+        ),
+        GlobalVariables.spaceSmallest(),
+        Row(
+          children: [
+            const Icon(CarbonIcons.email),
+            GlobalVariables.spaceSmaller(isWidth: true),
+            SelectableText(
+              Content.email,
+              style: WriteStyles.body1TabletandMobile(context)
+                  .copyWith(overflow: TextOverflow.fade),
+            ),
+          ],
+        ),
+        GlobalVariables.spaceSmallest(),
+        Row(
+          children: [
+            const Icon(
+              CarbonIcons.dot_mark,
+              color: Colors.green,
+            ),
+            GlobalVariables.spaceSmaller(isWidth: true),
+            Text(
+              Content.availability,
+              style: WriteStyles.body1TabletandMobile(context),
+            ),
+          ],
+        ),
+        GlobalVariables.spaceSmall(),
+        Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () async {
+                if (await canLaunchUrl(Content.githubLink)) {
+                  await launchUrl(Content.githubLink,
+                      mode: LaunchMode.externalApplication);
+                } else {
+                  throw 'Could not launch ${Content.githubLink}';
+                }
+              },
+              icon: const Icon(
+                CarbonIcons.logo_github,
+                size: 25,
               ),
-            ],
-          ),
-          GlobalVariables.spaceSmallest(),
-          Row(
-            children: [
-              const Icon(CarbonIcons.email),
-              GlobalVariables.spaceSmaller(isWidth: true),
-              SelectableText(
-                Content.email,
-                style: WriteStyles.body1TabletandMobile(context),
+            ),
+            GlobalVariables.layoutSpaceMedium(
+                platformHeight: platformHeight, platformWidth: platformWidth),
+            IconButton(
+              onPressed: () async {
+                if (await canLaunchUrl(Content.linkedinLink)) {
+                  await launchUrl(Content.linkedinLink,
+                      mode: LaunchMode.externalApplication);
+                } else {
+                  throw 'Could not launch ${Content.linkedinLink}';
+                }
+              },
+              icon: const Icon(
+                CarbonIcons.logo_linkedin,
+                size: 25,
               ),
-            ],
-          ),
-          GlobalVariables.spaceSmallest(),
-          Row(
-            children: [
-              const Icon(
-                CarbonIcons.dot_mark,
-                color: Colors.green,
-              ),
-              GlobalVariables.spaceSmaller(isWidth: true),
-              Text(
-                Content.availability,
-                style: WriteStyles.body1TabletandMobile(context),
-              ),
-            ],
-          ),
-          GlobalVariables.spaceSmall(),
-          Row(
-            children: [
-              IconButton(
-                onPressed: () async {
-                  if (await canLaunchUrl(Content.githubLink)) {
-                    await launchUrl(Content.githubLink,
-                        mode: LaunchMode.externalApplication);
-                  } else {
-                    throw 'Could not launch ${Content.githubLink}';
-                  }
-                },
-                icon: const Icon(CarbonIcons.logo_github),
-                iconSize: 40,
-              ),
-              IconButton(
-                onPressed: () async {
-                  if (await canLaunchUrl(Content.linkedinLink)) {
-                    await launchUrl(Content.linkedinLink,
-                        mode: LaunchMode.externalApplication);
-                  } else {
-                    throw 'Could not launch ${Content.linkedinLink}';
-                  }
-                },
-                icon: const Icon(CarbonIcons.logo_linkedin),
-                iconSize: 40,
-              ),
-            ],
-          )
-        ],
-      ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
@@ -178,7 +183,7 @@ class TabletHome extends StatelessWidget {
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 maxWidth: platformWidth * 0.6,
-                // maxHeight: 200,
+                maxHeight: platformHeight * 0.45,
               ),
               child: Material(
                 shadowColor: Theme.of(context).colorScheme.secondary,
@@ -187,7 +192,7 @@ class TabletHome extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(40),
                   child: Image.asset(
-                    'lib/assets/profile.jpeg',
+                    Content.profile,
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -23,7 +23,14 @@ class GlobalVariables {
       const EdgeInsets.fromLTRB(100, 56, 100, 100);
 
   static EdgeInsetsGeometry mobilePadding =
-      const EdgeInsets.symmetric(horizontal: 16);
+      const EdgeInsets.symmetric(horizontal: 14, vertical: 14);
+  static EdgeInsetsGeometry mobilePaddingMain =
+      const EdgeInsets.fromLTRB(14, 9, 14, 20);
+  static EdgeInsetsGeometry tabletPadding =
+      const EdgeInsets.symmetric(horizontal: 20, vertical: 20);
+  static EdgeInsetsGeometry tabletPaddingMain =
+      const EdgeInsets.fromLTRB(20, 13, 20, 30);
+
   static EdgeInsetsGeometry drawerPadding =
       const EdgeInsets.fromLTRB(10, 20, 10, 0);
 

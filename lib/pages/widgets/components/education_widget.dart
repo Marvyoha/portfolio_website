@@ -1,7 +1,8 @@
-import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:my_portfolio_website/constants/app_constants.dart';
 import 'package:my_portfolio_website/core/models/education_model.dart';
+import 'package:my_portfolio_website/pages/widgets/components/portfolio_divider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../constants/app_fonts.dart';
@@ -33,72 +34,158 @@ class EducationWidget extends StatelessWidget {
       }
     }
 
-// * Implement when needed on the spacer
-    TextStyle layoutSpacer() {
+    Widget layoutWidget() {
       switch (layoutProvider.currentPlatform) {
         case Platform.mobile:
-          return WriteStyles.header1Mobile(context);
+          // FOR MOBILE
+          return Column(
+            children: [
+              Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset(
+                      education.image,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  GlobalVariables.layoutSpaceSmaller(
+                    platformHeight: platformHeight,
+                    platformWidth: platformWidth,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        education.degree,
+                        style: fontStyler(),
+                      ),
+                      Text(
+                        education.school,
+                        style: WriteStyles.subtitleTabletandMobile(context)
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        education.timeRange,
+                        style: WriteStyles.body2(context),
+                      ),
+                      Text(
+                        education.location,
+                        style: WriteStyles.body2(context),
+                      )
+                    ],
+                  )
+                ],
+              ),
+              PortfolioDivider(
+                  platformWidth: platformWidth, platformHeight: platformHeight)
+            ],
+          );
         case Platform.tablet:
-          return WriteStyles.header1Tablet(context);
+          // FOR TABLET
+          return Column(
+            children: [
+              Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset(
+                      education.image,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  GlobalVariables.layoutSpaceSmaller(
+                    platformHeight: platformHeight,
+                    platformWidth: platformWidth,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        education.degree,
+                        style: fontStyler(),
+                      ),
+                      Text(
+                        education.school,
+                        style: WriteStyles.subtitleTabletandMobile(context)
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        education.timeRange,
+                        style: WriteStyles.body2(context),
+                      ),
+                      Text(
+                        education.location,
+                        style: WriteStyles.body2(context),
+                      )
+                    ],
+                  )
+                ],
+              ),
+              PortfolioDivider(
+                  platformWidth: platformWidth, platformHeight: platformHeight)
+            ],
+          );
 
         default:
-          return WriteStyles.header1Desktop(context);
+          // FOR DESKTOP
+          return Column(
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset(
+                      education.image,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  GlobalVariables.layoutSpaceSmaller(
+                      platformHeight: platformHeight,
+                      platformWidth: platformWidth,
+                      isWidth: true),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: platformWidth * 0.6,
+                        child: Text(
+                          education.degree,
+                          style: fontStyler(),
+                        ),
+                      ),
+                      SizedBox(
+                        width: platformWidth * 0.2,
+                        child: Text(
+                          education.school,
+                          style: WriteStyles.body2(context),
+                        ),
+                      ),
+                      Text(
+                        education.timeRange,
+                        style: WriteStyles.body2(context),
+                      ),
+                      SizedBox(
+                        width: platformWidth * 0.2,
+                        child: Text(
+                          education.location,
+                          style: WriteStyles.body2(context),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+              GlobalVariables.layoutSpaceSmaller(
+                platformHeight: platformHeight,
+                platformWidth: platformWidth,
+              ),
+            ],
+          );
       }
     }
 
-    return Column(
-      children: [
-        Row(
-          children: [
-            SizedBox(
-              height: 100,
-              width: 100,
-              child: Image.asset(
-                education.image,
-                fit: BoxFit.fill,
-              ),
-            ),
-            GlobalVariables.layoutSpaceSmaller(
-                platformHeight: platformHeight,
-                platformWidth: platformWidth,
-                isWidth: true),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: platformWidth * 0.6,
-                  child: Text(
-                    education.degree,
-                    style: fontStyler(),
-                  ),
-                ),
-                SizedBox(
-                  width: platformWidth * 0.2,
-                  child: Text(
-                    education.school,
-                    style: WriteStyles.body2(context),
-                  ),
-                ),
-                Text(
-                  education.timeRange,
-                  style: WriteStyles.body2(context),
-                ),
-                SizedBox(
-                  width: platformWidth * 0.2,
-                  child: Text(
-                    education.location,
-                    style: WriteStyles.body2(context),
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
-        GlobalVariables.layoutSpaceSmaller(
-          platformHeight: platformHeight,
-          platformWidth: platformWidth,
-        ),
-      ],
-    );
+    return layoutWidget();
   }
 }
