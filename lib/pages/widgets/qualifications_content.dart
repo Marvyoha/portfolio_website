@@ -67,60 +67,59 @@ class QualificationsContent extends StatelessWidget {
             layoutProvider.currentPlatform == Platform.desktop
                 ?
                 // FOR DESKTOP
-                Column(
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CertificatesWidget(
-                            cert: Content.certificatesList[0],
-                            platformWidth: platformWidth,
-                            platformHeight: platformHeight,
-                          ),
-                          CertificatesWidget(
-                            cert: Content.certificatesList[1],
-                            platformWidth: platformWidth,
-                            platformHeight: platformHeight,
-                          ),
-                        ],
+                      Column(
+                        children: Content.certificatesList
+                            .asMap() // Convert to a map to access indices
+                            .entries
+                            .where((entry) =>
+                                entry.key == 0 ||
+                                entry.key % 2 ==
+                                    0) // Filter for index 0 or even indices
+                            .map((entry) => Column(
+                                  children: [
+                                    CertificatesWidget(
+                                      cert: entry
+                                          .value, // Use the value from the entry
+                                      platformWidth: platformWidth,
+                                      platformHeight: platformHeight,
+                                    ),
+                                    GlobalVariables.layoutSpaceMedium(
+                                        platformHeight: platformHeight,
+                                        platformWidth: platformWidth),
+                                  ],
+                                ))
+                            .toList(),
                       ),
-                      GlobalVariables.layoutSpaceMedium(
-                          platformHeight: platformHeight,
-                          platformWidth: platformWidth),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CertificatesWidget(
-                            cert: Content.certificatesList[2],
-                            platformWidth: platformWidth,
-                            platformHeight: platformHeight,
-                          ),
-                          CertificatesWidget(
-                            cert: Content.certificatesList[3],
-                            platformWidth: platformWidth,
-                            platformHeight: platformHeight,
-                          ),
-                        ],
-                      ),
-                      GlobalVariables.layoutSpaceMedium(
-                          platformHeight: platformHeight,
-                          platformWidth: platformWidth),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CertificatesWidget(
-                            cert: Content.certificatesList[4],
-                            platformWidth: platformWidth,
-                            platformHeight: platformHeight,
-                          ),
-                        ],
-                      ),
+                      Column(
+                        children: Content.certificatesList
+                            .asMap() // Convert to a map to access indices
+                            .entries
+                            .where((entry) =>
+                                entry.key % 2 != 0) // Filter for odd indices
+                            .map((entry) => Column(
+                                  children: [
+                                    CertificatesWidget(
+                                      cert: entry
+                                          .value, // Use the value from the entry
+                                      platformWidth: platformWidth,
+                                      platformHeight: platformHeight,
+                                    ),
+                                    GlobalVariables.layoutSpaceMedium(
+                                        platformHeight: platformHeight,
+                                        platformWidth: platformWidth),
+                                  ],
+                                ))
+                            .toList(),
+                      )
                     ],
                   )
                 :
                 // FOR MOBILE AND TABLET
                 Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: Content.certificatesList
                         .map((cert) => Column(
                               children: [

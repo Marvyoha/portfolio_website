@@ -49,8 +49,7 @@ class Content {
   static String ibmLogo = 'lib/assets/ibm_logo.webp';
   static String exolveTechLogo = 'lib/assets/exolve_tech_logo.webp';
 
-  // QUALIFICATIONS CONTENT ( AUTOMATIC RENDERING FOR MOBILE AND TABLET)
-  //* HAVE TO DO MANUAL RENDERING FOR CERTIFICATES ONLY FOR DESKTOP @ lib\pages\widgets\qualifications_content.dart
+  // QUALIFICATIONS CONTENT ( AUTOMATIC RENDERING )
   static List<EducationModel> educationList = [
     EducationModel(
         image: Content.calebLogo,
@@ -122,7 +121,7 @@ designs were both attractive and intuitive for the end-user.''',
     SkillsModel(icon: DevIcons.figmaPlain, skill: 'Figma')
   ];
 
-// PROJECTS CONTENT
+// PROJECTS CONTENT (AUTOMATIC RENDERING)
   static String soleSeekers1 = 'lib/assets/soleSeekers1.webp';
   static String soleSeekers2 = 'lib/assets/soleSeekers2.webp';
   static String soleSeekers3 = 'lib/assets/soleSeekers3.webp';
@@ -199,6 +198,6 @@ designs were both attractive and intuitive for the end-user.''',
           'GitHub'
         ],
         projectImage: [carcare1, carcare2, carcare3, carcare4],
-        projectLink: 'https://github.com/Marvyoha/car_care_app')
+        projectLink: 'https://github.com/Marvyoha/car_care_app'),
   ];
 }
