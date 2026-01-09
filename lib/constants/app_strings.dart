@@ -22,7 +22,10 @@ class Content {
 
 // CREDENTIALS
   static final Uri cvLink = Uri.parse(
-      'https://drive.google.com/file/d/17tkOyPl30fP3-muALqLrhkuSAEp2klhn/view?usp=drive_link');
+      'https://drive.google.com/file/d/1lbT4RDc_21PEGr18oQlisY6btUv1Pc5H/view?usp=sharing');
+//? THIS IS THE STYLISED CV LINK
+  // static final Uri cvLink = Uri.parse(
+  //     'https://drive.google.com/file/d/17tkOyPl30fP3-muALqLrhkuSAEp2klhn/view?usp=drive_link');
   static final Uri githubLink = Uri.parse('https://github.com/Marvyoha');
   static final Uri linkedinLink =
       Uri.parse('https://www.linkedin.com/in/marvellous-olewuezi-9a9244321/');
@@ -48,6 +51,7 @@ class Content {
   static String googleLogo = 'lib/assets/google_logo.webp';
   static String ibmLogo = 'lib/assets/ibm_logo.webp';
   static String exolveTechLogo = 'lib/assets/exolve_tech_logo.webp';
+  static String technocratLogo = 'lib/assets/technocrat_logo.webp';
 
   // QUALIFICATIONS CONTENT ( AUTOMATIC RENDERING )
   static List<EducationModel> educationList = [
@@ -67,6 +71,7 @@ class Content {
   ];
   static List<ExperienceModel> experienceList = [
     ExperienceModel(
+        companyName: 'Exolve Technologies Ltd',
         image: Content.exolveTechLogo,
         jobTitle: 'Mobile App Developer Intern',
         jobDescription:
@@ -80,8 +85,20 @@ Flutter, enabling consistent user experiences across multiple
 devices.
 • Worked closely with the UX and UI design team to ensure app
 designs were both attractive and intuitive for the end-user.''',
-        timeRange: '05/2023 - 11/2023')
+        timeRange: '05/2023 - 11/2023'),
+    ExperienceModel(
+        companyName: 'Technocrat Consult and IT Systems Ltd',
+        image: Content.technocratLogo,
+        jobTitle: 'Mobile App Developer',
+        jobDescription:
+            '''• Implementing QR code scanning functionality for deposits and withdrawals
+• Developing virtual card features with secure transaction handling
+• Working on NFC integration for contactless payment capabilities
+• Building responsive and intuitive UI components that bridged frontend design with backend services
+• Ensuring smooth API integration and data flow across the application.''',
+        timeRange: '02/2025 - 12/2025'),
   ];
+
   static List<CertificatesModel> certificatesList = [
     CertificatesModel(
         issuedBy: 'Google',

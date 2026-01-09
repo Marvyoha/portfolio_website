@@ -24,7 +24,11 @@ class ProjectWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Uri githubLink = Uri.parse(projects.projectLink);
+    bool isLinkProvided = projects.projectLink != '';
+    bool isStoreLinkProvided = projects.storeLink != '';
+
+    final Uri githubLink = Uri.parse(projects.projectLink ?? '');
+    final Uri playStoreLink = Uri.parse(projects.storeLink ?? '');
     LayoutProvider layoutProvider =
         Provider.of<LayoutProvider>(context, listen: true);
 
@@ -104,39 +108,93 @@ class ProjectWidget extends StatelessWidget {
                       GlobalVariables.layoutSpaceMedium(
                           platformHeight: platformHeight,
                           platformWidth: platformWidth),
-                      TextButton(
-                        onPressed: () async {
-                          if (await canLaunchUrl(githubLink)) {
-                            await launchUrl(githubLink,
-                                mode: LaunchMode.externalApplication);
-                          } else {
-                            throw 'Could not launch ${Content.githubLink}';
-                          }
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                        ),
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          width: 200,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('View Source Code',
-                                  style:
-                                      WriteStyles.body1TabletandMobile(context)
-                                          .copyWith(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .surface)),
-                              Icon(
-                                CarbonIcons.logo_github,
-                                color: Theme.of(context).colorScheme.surface,
-                              )
-                            ],
-                          ),
-                        ),
+                      Row(
+                        children: [
+                          isLinkProvided
+                              ? TextButton(
+                                  onPressed: () async {
+                                    if (await canLaunchUrl(githubLink)) {
+                                      await launchUrl(githubLink,
+                                          mode: LaunchMode.externalApplication);
+                                    } else {
+                                      throw 'Could not launch ${Content.githubLink}';
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    width: 200,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('View Source Code',
+                                            style: WriteStyles
+                                                    .body1TabletandMobile(
+                                                        context)
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .surface)),
+                                        Icon(
+                                          CarbonIcons.logo_github,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
+                          GlobalVariables.layoutSpaceSmaller(
+                              isWidth: true,
+                              platformHeight: platformHeight,
+                              platformWidth: platformWidth),
+                          isStoreLinkProvided
+                              ? TextButton(
+                                  onPressed: () async {
+                                    if (await canLaunchUrl(playStoreLink)) {
+                                      await launchUrl(playStoreLink,
+                                          mode: LaunchMode.externalApplication);
+                                    } else {
+                                      throw 'Could not launch $playStoreLink';
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    width: 150,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('View In Store',
+                                            style: WriteStyles
+                                                    .body1TabletandMobile(
+                                                        context)
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .surface)),
+                                        Icon(
+                                          CarbonIcons.store,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
                       ),
                     ],
                   ),
@@ -217,39 +275,93 @@ class ProjectWidget extends StatelessWidget {
                       GlobalVariables.layoutSpaceMedium(
                           platformHeight: platformHeight,
                           platformWidth: platformWidth),
-                      TextButton(
-                        onPressed: () async {
-                          if (await canLaunchUrl(githubLink)) {
-                            await launchUrl(githubLink,
-                                mode: LaunchMode.externalApplication);
-                          } else {
-                            throw 'Could not launch ${Content.githubLink}';
-                          }
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                        ),
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          width: 200,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('View Source Code',
-                                  style:
-                                      WriteStyles.body1TabletandMobile(context)
-                                          .copyWith(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .surface)),
-                              Icon(
-                                CarbonIcons.logo_github,
-                                color: Theme.of(context).colorScheme.surface,
-                              )
-                            ],
-                          ),
-                        ),
+                      Row(
+                        children: [
+                          isLinkProvided
+                              ? TextButton(
+                                  onPressed: () async {
+                                    if (await canLaunchUrl(githubLink)) {
+                                      await launchUrl(githubLink,
+                                          mode: LaunchMode.externalApplication);
+                                    } else {
+                                      throw 'Could not launch ${Content.githubLink}';
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    width: 200,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('View Source Code',
+                                            style: WriteStyles
+                                                    .body1TabletandMobile(
+                                                        context)
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .surface)),
+                                        Icon(
+                                          CarbonIcons.logo_github,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
+                          GlobalVariables.layoutSpaceSmaller(
+                              isWidth: true,
+                              platformHeight: platformHeight,
+                              platformWidth: platformWidth),
+                          isStoreLinkProvided
+                              ? TextButton(
+                                  onPressed: () async {
+                                    if (await canLaunchUrl(playStoreLink)) {
+                                      await launchUrl(playStoreLink,
+                                          mode: LaunchMode.externalApplication);
+                                    } else {
+                                      throw 'Could not launch $playStoreLink';
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    width: 150,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('View In Store',
+                                            style: WriteStyles
+                                                    .body1TabletandMobile(
+                                                        context)
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .surface)),
+                                        Icon(
+                                          CarbonIcons.store,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
                       ),
                     ],
                   ),
@@ -316,38 +428,93 @@ class ProjectWidget extends StatelessWidget {
                         GlobalVariables.layoutSpaceLarge(
                             platformHeight: platformHeight,
                             platformWidth: platformWidth),
-                        TextButton(
-                          onPressed: () async {
-                            if (await canLaunchUrl(githubLink)) {
-                              await launchUrl(githubLink,
-                                  mode: LaunchMode.externalApplication);
-                            } else {
-                              throw 'Could not launch ${Content.githubLink}';
-                            }
-                          },
-                          style: TextButton.styleFrom(
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                          ),
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            width: 220,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('View Source Code',
-                                    style: WriteStyles.body1Desktop(context)
-                                        .copyWith(
+                        Row(
+                          children: [
+                            isLinkProvided
+                                ? TextButton(
+                                    onPressed: () async {
+                                      if (await canLaunchUrl(githubLink)) {
+                                        await launchUrl(githubLink,
+                                            mode:
+                                                LaunchMode.externalApplication);
+                                      } else {
+                                        throw 'Could not launch $githubLink';
+                                      }
+                                    },
+                                    style: TextButton.styleFrom(
+                                      backgroundColor:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      width: 210,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('View Source Code',
+                                              style: WriteStyles.body1Desktop(
+                                                      context)
+                                                  .copyWith(
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .surface)),
+                                          Icon(
+                                            CarbonIcons.logo_github,
                                             color: Theme.of(context)
                                                 .colorScheme
-                                                .surface)),
-                                Icon(
-                                  CarbonIcons.logo_github,
-                                  color: Theme.of(context).colorScheme.surface,
-                                )
-                              ],
-                            ),
-                          ),
+                                                .surface,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox(),
+                            GlobalVariables.layoutSpaceSmaller(
+                                isWidth: true,
+                                platformHeight: platformHeight,
+                                platformWidth: platformWidth),
+                            isStoreLinkProvided
+                                ? TextButton(
+                                    onPressed: () async {
+                                      if (await canLaunchUrl(playStoreLink)) {
+                                        await launchUrl(playStoreLink,
+                                            mode:
+                                                LaunchMode.externalApplication);
+                                      } else {
+                                        throw 'Could not launch $playStoreLink';
+                                      }
+                                    },
+                                    style: TextButton.styleFrom(
+                                      backgroundColor:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      width: 150,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('View In Store',
+                                              style: WriteStyles.body1Desktop(
+                                                      context)
+                                                  .copyWith(
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .surface)),
+                                          Icon(
+                                            CarbonIcons.store,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .surface,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox(),
+                          ],
                         ),
                       ],
                     ),

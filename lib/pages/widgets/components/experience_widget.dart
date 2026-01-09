@@ -63,6 +63,13 @@ class ExperienceWidget extends StatelessWidget {
                             platformHeight: platformHeight,
                             platformWidth: platformWidth),
                         Text(
+                          exp.companyName,
+                          style: fontStyler(),
+                        ),
+                        GlobalVariables.layoutSpaceSmaller(
+                            platformHeight: platformHeight,
+                            platformWidth: platformWidth),
+                        Text(
                           exp.timeRange,
                           style: WriteStyles.body2(context),
                         ),
@@ -70,7 +77,8 @@ class ExperienceWidget extends StatelessWidget {
                           children: [
                             Text(
                               exp.jobTitle,
-                              style: fontStyler(),
+                              style: fontStyler()
+                                  .copyWith(fontWeight: FontWeight.normal),
                             ),
                             GlobalVariables.layoutSpaceMedium(
                                 platformHeight: platformHeight,
@@ -119,6 +127,13 @@ class ExperienceWidget extends StatelessWidget {
                             platformHeight: platformHeight,
                             platformWidth: platformWidth),
                         Text(
+                          exp.companyName,
+                          style: fontStyler(),
+                        ),
+                        GlobalVariables.layoutSpaceSmaller(
+                            platformHeight: platformHeight,
+                            platformWidth: platformWidth),
+                        Text(
                           exp.timeRange,
                           style: WriteStyles.body2(context),
                         ),
@@ -126,7 +141,8 @@ class ExperienceWidget extends StatelessWidget {
                           children: [
                             Text(
                               exp.jobTitle,
-                              style: fontStyler(),
+                              style: fontStyler()
+                                  .copyWith(fontWeight: FontWeight.normal),
                             ),
                             GlobalVariables.layoutSpaceMedium(
                                 platformHeight: platformHeight,
@@ -179,8 +195,19 @@ class ExperienceWidget extends StatelessWidget {
                         SizedBox(
                           width: platformWidth * 0.4,
                           child: Text(
-                            exp.jobTitle,
+                            exp.companyName,
                             style: fontStyler(),
+                          ),
+                        ),
+                        GlobalVariables.layoutSpaceSmaller(
+                            platformHeight: platformHeight,
+                            platformWidth: platformWidth),
+                        SizedBox(
+                          width: platformWidth * 0.4,
+                          child: Text(
+                            exp.jobTitle,
+                            style: fontStyler()
+                                .copyWith(fontWeight: FontWeight.normal),
                           ),
                         ),
                         GlobalVariables.layoutSpaceMedium(
