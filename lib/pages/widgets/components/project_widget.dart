@@ -381,7 +381,7 @@ class ProjectWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  SizedBox(
                     // decoration: BoxDecoration(
                     //   color: Theme.of(context).colorScheme.inverseSurface,
                     // ),

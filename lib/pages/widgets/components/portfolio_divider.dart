@@ -16,6 +16,7 @@ class PortfolioDivider extends StatelessWidget {
     LayoutProvider layoutProvider =
         Provider.of<LayoutProvider>(context, listen: true);
     // * Implement when needed on the spacer
+    // ignore: unused_element
     TextStyle layoutSpacer() {
       switch (layoutProvider.currentPlatform) {
         case Platform.mobile:

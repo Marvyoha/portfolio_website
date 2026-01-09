@@ -1,6 +1,5 @@
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:my_portfolio_website/pages/widgets/get_in_touch_content.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -38,6 +37,7 @@ class _HomepageDesktopState extends State<HomepageDesktop> {
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
   final GlobalKey _getInTouchKey = GlobalKey();
+  // ignore: unused_element
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext!;
     Scrollable.ensureVisible(context,

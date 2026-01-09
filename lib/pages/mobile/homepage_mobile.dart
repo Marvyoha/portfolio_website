@@ -1,5 +1,4 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_website/pages/widgets/get_in_touch_content.dart';
@@ -113,7 +112,7 @@ class _HomepageMobileState extends State<HomepageMobile> {
       await Future.delayed(const Duration(seconds: 1));
 
       // Reload the entire page
-      html.window.location.reload();
+      web.window.location.reload();
     } finally {
       setState(() {
         _isRefreshing = false;

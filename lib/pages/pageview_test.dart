@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../core/providers/theme_provider.dart';
 
-
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
 
@@ -20,14 +19,20 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(title: IconButton(onPressed: (){   Provider.of<ThemeProvider>(context, listen: false)
-                    .toggleTheme(context);}, icon:const Icon(Icons.light)),),
+      appBar: AppBar(
+        title: IconButton(
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false)
+                  .toggleTheme(context);
+            },
+            icon: const Icon(Icons.light)),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: PageView(
             pageSnapping: false,
-            scrollBehavior:const ScrollBehavior(),
+            scrollBehavior: const ScrollBehavior(),
             scrollDirection: Axis.vertical,
             controller: _controller,
             onPageChanged: (value) {
@@ -41,12 +46,12 @@ class _OnBoardingState extends State<OnBoarding> {
                 height: 200,
                 color: Colors.blue,
               ),
-             Container(
+              Container(
                 width: 200,
                 height: 200,
                 color: Colors.yellow,
               ),
-                 Container(
+              Container(
                 width: 200,
                 height: 200,
                 color: Colors.red,
@@ -56,7 +61,7 @@ class _OnBoardingState extends State<OnBoarding> {
         ),
       ),
       bottomSheet: Container(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,22 +70,19 @@ class _OnBoardingState extends State<OnBoarding> {
                 ? const SizedBox()
                 : TextButton(
                     onPressed: () {
-                      _controller.animateTo(1300,  duration: const Duration(milliseconds: 1000),
+                      _controller.animateTo(1300,
+                          duration: const Duration(milliseconds: 1000),
                           curve: Curves.easeOut);
                     },
-                    child:  Text(
+                    child: Text(
                       'Skip',
-                    style: WriteStyles.body1TabletandMobile(context),
-                  
+                      style: WriteStyles.body1TabletandMobile(context),
                     )),
             onLastPage
                 ? TextButton(
-                    onPressed: () {
-                  
-                    },
-                    child: const Text( 
+                    onPressed: () {},
+                    child: const Text(
                       'Done',
-                    
                     ))
                 : TextButton(
                     onPressed: () {
@@ -92,7 +94,6 @@ class _OnBoardingState extends State<OnBoarding> {
                       children: [
                         Text(
                           'Next',
-                      
                         ),
                         Icon(
                           Icons.chevron_right,
